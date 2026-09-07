@@ -1,0 +1,1104 @@
+
+<!DOCTYPE html>
+<html lang="fr" dir="ltr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fikra Web — Transformez votre idée en projet web</title>
+    <meta name="description" content="Développement web flexible en Algérie. Achetez le temps de développement dont vous avez besoin pour construire votre site, application, e-commerce ou MVP.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>s
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#050816',
+                            800: '#0B1020',
+                            700: '#111827',
+                        },
+                        brand: {
+                            cyan: '#06b6d4',
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        ar: ['Cairo', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for premium feel */
+        body {
+            background-color: #050816;
+            color: #94a3b8;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, .text-white { color: #f8fafc; }
+        
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        .glow-border { position: relative; }
+        .glow-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(to right, #06b6d4, #3b82f6, #8b5cf6);
+            z-index: -1;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+        .glow-border:hover::before { opacity: 1; }
+
+        .glass-panel {
+            background: rgba(11, 16, 32, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .process-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: nowrap;
+        }
+
+        .process-step {
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: 210px;
+            position: relative;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(11, 16, 32, 0.8));
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 1.25rem;
+            padding: 1.6rem 1rem 1.25rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(2, 6, 23, 0.28);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .process-step::before {
+            content: "";
+            position: absolute;
+            inset: 0 auto auto 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(6, 182, 212, 0.9), rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.9));
+            opacity: 0.9;
+        }
+
+        .process-step:hover {
+            transform: translateY(-6px);
+            border-color: rgba(96, 165, 250, 0.4);
+            box-shadow: 0 25px 55px rgba(59, 130, 246, 0.15);
+        }
+
+        .process-step .icon-wrap {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
+            display: grid;
+            place-items: center;
+            border-radius: 1rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+        }
+
+        .process-step .label {
+            display: inline-block;
+            font-size: 10px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(148, 163, 184, 0.9);
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .process-step .step-name {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #f8fafc;
+        }
+
+        .process-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(148, 163, 184, 0.8);
+            width: 42px;
+            flex: 0 0 42px;
+        }
+
+        .process-connector i {
+            width: 1.5rem;
+            height: 1.5rem;
+            opacity: 0.85;
+        }
+
+        @media (max-width: 767px) {
+            .process-grid {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .process-step {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .process-connector {
+                width: 100%;
+                flex-basis: auto;
+                min-height: 1.25rem;
+            }
+
+            .process-connector .ltr-icon,
+            .process-connector .rtl-icon {
+                display: none;
+            }
+
+            .process-connector .mobile-arrow {
+                display: inline-block;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .process-connector .mobile-arrow {
+                display: none;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cursor::after {
+            content: '█';
+            animation: blink 1s step-start infinite;
+            color: #06b6d4;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050816; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    </style>
+</head>
+<body class="antialiased font-sans transition-colors duration-300">
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 z-[-1] bg-grid pointer-events-none"></div>
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-brand-purple/20 rounded-full blur-[120px] pointer-events-none animate-pulse-slow"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- Fixed WhatsApp Button -->
+    <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-8 right-4 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center rtl:left-6 rtl:right-auto animate-bounce-slow">
+        <i data-lucide="message-circle" class="w-7 h-7"></i>
+    </a>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-40 glass-panel border-b border-white/5 transition-all duration-300 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            
+            <a href="#" class="flex items-center gap-2 group">
+                <img class="max-w-40" src="fikra logo.webp" alt="">
+                <!-- <span class="text-brand-cyan font-mono text-xl"><i data-lucide="terminal-square"></i></span>
+                <span class="text-white font-bold text-xl tracking-tight group-hover:text-brand-cyan transition-colors">Fikra Web</span> -->
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#how-it-works" class="text-sm font-medium hover:text-white transition-colors" data-i18n="nav.how">Comment ça marche</a>
+                <a href="#pricing" class="text-sm font-medium hover:text-white transition-colors" data-i18n="nav.packs">Packs</a>
+                <a href="#services" class="text-sm font-medium hover:text-white transition-colors" data-i18n="nav.services">Services</a>
+                <a href="#faq" class="text-sm font-medium hover:text-white transition-colors" data-i18n="nav.faq">FAQ</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6">
+                <!-- Lang Switcher -->
+                <div class="flex gap-2 font-mono text-xs">
+                    <button onclick="setLang('fr')" class="lang-btn hover:text-white transition-colors">FR</button>
+                    <span class="text-slate-700">|</span>
+                    <button onclick="setLang('en')" class="lang-btn hover:text-white transition-colors">EN</button>
+                    <span class="text-slate-700">|</span>
+                    <button onclick="setLang('ar')" class="lang-btn hover:text-white transition-colors">AR</button>
+                </div>
+                
+                <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" class="glow-border bg-dark-800 text-white px-5 py-2 rounded-md text-sm font-semibold hover:bg-dark-700 transition-all flex items-center gap-2">
+                    <span data-i18n="nav.cta">Start your idea</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 ltr-icon"></i>
+                    <i data-lucide="arrow-left" class="w-4 h-4 rtl-icon hidden"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-white" id="mobile-menu-btn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-dark-800 absolute w-full border-b border-white/5" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-4 flex flex-col">
+                <a href="#how-it-works" class="block text-sm" data-i18n="nav.how">Comment ça marche</a>
+                <a href="#pricing" class="block text-sm" data-i18n="nav.packs">Packs</a>
+                <a href="#services" class="block text-sm" data-i18n="nav.services">Services</a>
+                <a href="#faq" class="block text-sm" data-i18n="nav.faq">FAQ</a>
+                <div class="flex gap-4 font-mono text-sm py-2 border-t border-white/5 mt-2 pt-4">
+                    <button onclick="setLang('fr')">FR</button>
+                    <button onclick="setLang('en')">EN</button>
+                    <button onclick="setLang('ar')">AR</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-28 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                
+                <!-- Hero Left -->
+                <div class="z-10 reveal active">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 text-brand-cyan font-mono text-xs mb-6">
+                        <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                        <span data-i18n="hero.badge">> idea.status = READY_TO_BUILD</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <span data-i18n="hero.h1_1">Votre idée mérite plus qu'un devis.</span><br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan via-brand-blue to-brand-purple" data-i18n="hero.h1_2">Elle mérite d'être construite.</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-400 mb-8 max-w-xl leading-relaxed" data-i18n="hero.desc">
+                        Achetez simplement le temps de développement dont vous avez besoin et utilisez-le pour construire les fonctionnalités les plus importantes de votre projet.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 mb-12">
+                        <a href="#pricing" class="bg-gradient-to-r from-brand-cyan to-brand-blue text-white px-6 py-3 rounded-md font-medium hover:shadow-lg hover:shadow-brand-cyan/25 transition-all">
+                            <span data-i18n="hero.btn1">Voir les packs</span>
+                        </a>
+                        <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" class="glass-panel px-6 py-3 rounded-md font-medium hover:bg-white/5 transition-all text-white">
+                            <span data-i18n="hero.btn2">Parler de mon idée</span>
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 font-mono text-xs text-slate-500">
+                        <span class="px-2 py-1 bg-dark-800 rounded border border-white/5">PHP</span>
+                        <span class="px-2 py-1 bg-dark-800 rounded border border-white/5">Laravel</span>
+                        <span class="px-2 py-1 bg-dark-800 rounded border border-white/5">Livewire</span>
+                        <span class="px-2 py-1 bg-dark-800 rounded border border-white/5">MySQL</span>
+                        <span class="px-2 py-1 bg-dark-800 rounded border border-white/5">JavaScript</span>
+                    </div>
+                </div>
+
+                <!-- Hero Right: IDE / Terminal -->
+                <div class="relative z-10 w-full max-w-lg mx-auto lg:mx-0 reveal active">
+                    <!-- Cards omitted for brevity in thought process, kept here in full -->
+                    <div class="absolute -top-6 -right-6 lg:-right-12 glass-panel p-4 rounded-lg border border-white/10 shadow-2xl z-20 animate-float hidden md:block">
+                        <p class="text-[10px] text-slate-400 font-mono mb-1">DEVELOPMENT TIME</p>
+                        <p class="text-2xl font-bold text-white font-mono">40<span class="text-sm text-brand-cyan">h</span></p>
+                        <p class="text-xs text-slate-500 mt-1">32,000 DA</p>
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-[10px] text-green-500 font-mono tracking-widest">AVAILABLE</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-20 left-6 lg:-left-10 glass-panel p-4 rounded-lg border border-white/10 shadow-2xl z-20 animate-float" style="animation-delay: -3s;">
+                        <p class="text-[10px] text-slate-400 font-mono mb-1">TIME USED</p>
+                        <div class="flex items-end gap-3">
+                            <p class="text-xl font-bold text-white font-mono">11h 15m</p>
+                            <p class="text-xs text-slate-500 font-mono mb-1">/ 28h 45m left</p>
+                        </div>
+                        <div class="w-full bg-dark-900 h-1 mt-3 rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-brand-cyan to-brand-purple w-[28%] h-full rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-dark-800 rounded-xl overflow-hidden border border-slate-700/50 shadow-2xl">
+                        <div class="bg-[#1e293b]/50 px-4 py-3 flex items-center border-b border-slate-700/50">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                            </div>
+                            <div class="flex-1 text-center font-mono text-xs text-slate-400">fikra-project.php</div>
+                        </div>
+                        
+                        <div class="p-6 font-mono text-sm leading-relaxed overflow-x-auto text-left" dir="ltr">
+                            <div class="text-slate-400"><span class="text-brand-purple">class</span> <span class="text-yellow-200">YourIdea</span></div>
+                            <div class="text-slate-400">{</div>
+                            <div class="text-slate-400 ml-4"><span class="text-brand-purple">public function</span> <span class="text-brand-blue">build</span>()</div>
+                            <div class="text-slate-400 ml-4">{</div>
+                            <div class="text-slate-400 ml-8"><span class="text-brand-cyan">return</span> <span class="text-green-400">"Let's make it real."</span>;</div>
+                            <div class="text-slate-400 ml-4">}</div>
+                            <div class="text-slate-400">}</div>
+                            
+                            <div class="mt-6 pt-4 border-t border-slate-700/50 text-xs">
+                                <div id="terminal-output"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section class="py-20 reveal">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-dark-800 rounded-lg border border-slate-800 p-1">
+                <div class="bg-dark-900 rounded-md p-6 font-mono text-sm">
+                    <div class="text-slate-500 mb-4">> problem.detect()</div>
+                    <h2 class="text-xl md:text-2xl text-white font-sans font-bold mb-6" data-i18n="problem.title">Vous avez une idée. Le problème, c'est le budget.</h2>
+                    
+                    <div class="space-y-4 text-red-400 mb-8">
+                        <div>
+                            <span class="font-bold">ERROR 001:</span>
+                            <span class="text-slate-300" data-i18n="problem.e1">Projet évalué trop cher dès le départ.</span>
+                        </div>
+                        <div>
+                            <span class="font-bold">ERROR 002:</span>
+                            <span class="text-slate-300" data-i18n="problem.e2">Cahier des charges compliqué exigé.</span>
+                        </div>
+                        <div>
+                            <span class="font-bold">ERROR 003:</span>
+                            <span class="text-slate-300" data-i18n="problem.e3">Impossible de savoir si l'idée fonctionnera avant de payer.</span>
+                        </div>
+                    </div>
+
+                    <div class="text-brand-cyan mb-2">> fikra.solution()</div>
+                    <div class="text-2xl md:text-3xl font-bold text-white mb-4">
+                        <span class="text-brand-cyan">START SMALL.</span><br>
+                        <span class="text-brand-purple">BUILD SMART.</span>
+                    </div>
+                    <p class="text-slate-400 font-sans" data-i18n="problem.sol_desc">
+                        Au lieu de payer un gros projet dès le départ, commencez avec le temps de développement dont vous avez réellement besoin.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE CONCEPT -->
+    <section id="how-it-works" class="py-20 bg-[#0B1020]/50 border-y border-white/5 reveal">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-cyan/20 bg-brand-cyan/5 text-brand-cyan font-mono text-[10px] uppercase tracking-[0.2em] mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                Development flow
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-14" data-i18n="concept.title">Development as Time.</h2>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="icon-wrap text-brand-cyan">
+                        <i data-lucide="lightbulb" class="w-8 h-8"></i>
+                    </div>
+                    <span class="label">01</span>
+                    <span class="step-name" data-i18n="concept.s1">Your Idea</span>
+                </div>
+
+                <div class="process-connector" aria-hidden="true">
+                    <i data-lucide="arrow-right" class="ltr-icon"></i>
+                    <i data-lucide="arrow-left" class="rtl-icon hidden"></i>
+                    <i data-lucide="arrow-down" class="mobile-arrow hidden"></i>
+                </div>
+
+                <div class="process-step">
+                    <div class="icon-wrap text-brand-purple">
+                        <i data-lucide="clock" class="w-8 h-8"></i>
+                    </div>
+                    <span class="label">02</span>
+                    <span class="step-name" data-i18n="concept.s2">Dev Time</span>
+                </div>
+
+                <div class="process-connector" aria-hidden="true">
+                    <i data-lucide="arrow-right" class="ltr-icon"></i>
+                    <i data-lucide="arrow-left" class="rtl-icon hidden"></i>
+                    <i data-lucide="arrow-down" class="mobile-arrow hidden"></i>
+                </div>
+
+                <div class="process-step">
+                    <div class="icon-wrap text-brand-blue">
+                        <i data-lucide="code" class="w-8 h-8"></i>
+                    </div>
+                    <span class="label">03</span>
+                    <span class="step-name" data-i18n="concept.s3">Features</span>
+                </div>
+
+                <div class="process-connector" aria-hidden="true">
+                    <i data-lucide="arrow-right" class="ltr-icon"></i>
+                    <i data-lucide="arrow-left" class="rtl-icon hidden"></i>
+                    <i data-lucide="arrow-down" class="mobile-arrow hidden"></i>
+                </div>
+
+                <div class="process-step">
+                    <div class="icon-wrap text-green-400">
+                        <i data-lucide="rocket" class="w-8 h-8"></i>
+                    </div>
+                    <span class="label">04</span>
+                    <span class="step-name" data-i18n="concept.s4">Product</span>
+                </div>
+            </div>
+
+            <p class="mt-16 max-w-2xl mx-auto text-slate-400" data-i18n="concept.desc">
+                Vous choisissez un pack d'heures. Vous définissez vos priorités. Le temps est utilisé pour développer les fonctionnalités nécessaires. Vous suivez ce qui a été réalisé et le temps consommé.
+            </p>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-24 reveal">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="font-mono text-brand-cyan text-sm mb-4">> pricing.select()</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-i18n="pricing.title">Choisissez votre temps de développement.</h2>
+                <p class="text-slate-400" data-i18n="pricing.sub">Commencez petit. Construisez progressivement.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
+                
+                <!-- Starter -->
+                <div class="glass-panel rounded-xl p-8 border border-white/5 hover:border-brand-cyan/30 transition-all">
+                    <div class="font-mono text-xs text-slate-500 mb-6">PACK.start()</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">STARTER</h3>
+                    <div class="flex items-end gap-2 mb-2">
+                        <span class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">20<span class="text-2xl">H</span></span>
+                    </div>
+                    <div class="text-brand-cyan font-mono mb-8">18,000 DA</div>
+                    
+                    <ul class="space-y-3 text-sm text-slate-400 mb-8 font-mono">
+                        <li>- Landing page</li>
+                        <li>- Small website</li>
+                        <li>- Bug fixes</li>
+                        <li>- Small features</li>
+                        <li>- Prototype</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-3 rounded-md border border-slate-600 hover:bg-slate-800 text-white transition-colors" data-i18n="pricing.btn1">Start →</a>
+                </div>
+
+                <!-- Standard (Popular) -->
+                <div class="glow-border rounded-xl">
+                    <div class="bg-dark-800 rounded-xl p-8 relative overflow-hidden h-full">
+                        <div class="absolute top-0 right-0 bg-brand-purple text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg font-mono rtl:right-auto rtl:left-0 rtl:rounded-bl-none rtl:rounded-br-lg">// MOST POPULAR</div>
+                        
+                        <div class="font-mono text-xs text-brand-cyan mb-6">PACK.standard()</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">STANDARD</h3>
+                        <div class="flex items-end gap-2 mb-2">
+                            <span class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-purple">40<span class="text-3xl">H</span></span>
+                        </div>
+                        <div class="text-brand-cyan font-mono mb-8">32,000 DA</div>
+                        
+                        <ul class="space-y-3 text-sm text-slate-300 mb-8 font-mono">
+                            <li>- Web applications</li>
+                            <li>- E-commerce</li>
+                            <li>- Dashboards</li>
+                            <li>- Multiple features</li>
+                            <li>- MVP development</li>
+                        </ul>
+                        
+                        <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-3 rounded-md bg-gradient-to-r from-brand-cyan to-brand-purple text-white font-bold hover:opacity-90 transition-opacity" data-i18n="pricing.btn2">Build with me →</a>
+                    </div>
+                </div>
+
+                <!-- Pro -->
+                <div class="glass-panel rounded-xl p-8 border border-white/5 hover:border-brand-purple/30 transition-all">
+                    <div class="font-mono text-xs text-slate-500 mb-6">PACK.pro()</div>
+                    <h3 class="text-2xl font-bold text-white mb-2">PRO</h3>
+                    <div class="flex items-end gap-2 mb-2">
+                        <span class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">80<span class="text-2xl">H</span></span>
+                    </div>
+                    <div class="text-brand-purple font-mono mb-8">58,000 DA</div>
+                    
+                    <ul class="space-y-3 text-sm text-slate-400 mb-8 font-mono">
+                        <li>- Larger applications</li>
+                        <li>- Complex features</li>
+                        <li>- Advanced MVP</li>
+                        <li>- Long dev cycles</li>
+                        <li>- Full refactoring</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-3 rounded-md border border-slate-600 hover:bg-slate-800 text-white transition-colors" data-i18n="pricing.btn3">Go Pro →</a>
+                </div>
+            </div>
+
+            <!-- Custom & Disclaimer -->
+            <div class="max-w-3xl mx-auto mt-16 text-center">
+                <div class="mb-8 font-mono text-sm">
+                    <span class="text-slate-500">> pack.custom()</span><br>
+                    <span class="text-white" data-i18n="pricing.custom">Need more? Custom development time available. </span>
+                    <a href="#contact" class="text-brand-cyan hover:underline ml-2" data-i18n="pricing.custom_link">Let's talk</a>
+                </div>
+
+                <div class="bg-dark-900 border border-slate-800 rounded-lg p-6 text-sm text-slate-400 text-start font-mono leading-relaxed">
+                    <div class="text-white font-bold mb-2">/* TRANSPARENT MODEL */</div>
+                    <div data-i18n="pricing.disclaimer1">You buy development time. You decide what we prioritize. You see what gets done. You know how much time remains.</div>
+                    <div class="mt-4 text-xs text-slate-500 font-sans" data-i18n="pricing.disclaimer2">
+                        Les packs représentent un nombre d'heures de développement. Lorsque les heures sont consommées, vous décidez simplement si vous souhaitez continuer avec un nouveau pack. Pas de mauvaises surprises.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSPARENCY DASHBOARD -->
+    <section class="py-20 reveal">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="mb-12 text-center md:text-start">
+                <h2 class="text-3xl font-bold text-white mb-4" data-i18n="dash.title">Vous voulez savoir où passent vos heures ?</h2>
+                <p class="text-slate-400 max-w-2xl" data-i18n="dash.sub">Normal. C'est pour ça que chaque tâche est suivie. Vous avez une visibilité totale sur l'avancement.</p>
+            </div>
+
+            <div class="bg-[#0B1020] rounded-xl border border-slate-800 overflow-hidden shadow-2xl font-mono text-xs sm:text-sm">
+                <div class="bg-[#1e293b]/50 px-4 py-2 border-b border-slate-800 text-slate-400">
+                    PROJECT: my-awesome-idea
+                </div>
+                <div class="p-4 sm:p-6 overflow-x-auto text-left" dir="ltr">
+                    <table class="w-full min-w-[500px]">
+                        <thead class="text-slate-500 border-b border-slate-800">
+                            <tr>
+                                <th class="pb-3 font-normal text-left">TASK</th>
+                                <th class="pb-3 font-normal text-left">TIME</th>
+                                <th class="pb-3 font-normal text-left">STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-300">
+                            <tr class="border-b border-slate-800/50 hover:bg-white/5 transition-colors">
+                                <td class="py-3">Authentication System</td>
+                                <td>02:20</td>
+                                <td class="text-green-400">✓ DONE</td>
+                            </tr>
+                            <tr class="border-b border-slate-800/50 hover:bg-white/5 transition-colors">
+                                <td class="py-3">Admin Dashboard</td>
+                                <td>04:10</td>
+                                <td class="text-green-400">✓ DONE</td>
+                            </tr>
+                            <tr class="border-b border-slate-800/50 hover:bg-white/5 transition-colors">
+                                <td class="py-3">Product Management UI</td>
+                                <td>03:30</td>
+                                <td class="text-green-400">✓ DONE</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors">
+                                <td class="py-3 text-slate-500">Payment Gateway</td>
+                                <td class="text-slate-500">--:--</td>
+                                <td class="text-yellow-400">PENDING</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="mt-8 pt-6 border-t border-slate-800">
+                        <div class="flex justify-between text-slate-400 mb-2">
+                            <span>TIME USED: <span class="text-white">10h 00m</span></span>
+                            <span>TIME REMAINING: <span class="text-white">30h 00m</span></span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="text-brand-cyan tracking-[0.2em] whitespace-nowrap overflow-hidden hidden sm:block">
+                                [████████░░░░░░░░░░░░░░░░░░░░░░]
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full sm:hidden">
+                                <div class="bg-brand-cyan w-[25%] h-full rounded-full"></div>
+                            </div>
+                            <span class="text-brand-cyan font-bold">25%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-20 reveal">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="font-mono text-brand-purple text-sm mb-4">> available.services()</div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12" data-i18n="services.title">Qu'est-ce qu'on peut construire ?</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Service Cards -->
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-brand-cyan transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">01</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Websites</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.1">Modern websites and pages.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-brand-cyan transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                </div>
+
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-brand-blue transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">02</div>
+                    <h3 class="text-lg font-bold text-white mb-2">E-commerce</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.2">Online stores and e-commerce.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-brand-blue transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                </div>
+
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-brand-purple transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">03</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Web Apps</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.3">Custom web applications.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-brand-purple transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                </div>
+
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-brand-cyan transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">04</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Dashboards</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.4">Admin panels and dashboards.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-brand-cyan transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                </div>
+
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-green-400 transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">05</div>
+                    <h3 class="text-lg font-bold text-white mb-2">APIs</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.5">Integrations between systems.</p>
+                    <div class="absolute inset-0 bg-dark-900/95 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity font-mono text-xs text-green-400">
+                        GET /api/data <br>200 OK
+                    </div>
+                </div>
+
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-yellow-400 transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">06</div>
+                    <h3 class="text-lg font-bold text-white mb-2">MVP</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.6">Build the first usable version.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-yellow-400 transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                </div>
+
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-red-400 transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">07</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Bug Fixing</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.7">Fix and improve existing sites.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-red-400 transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                </div>
+
+                <div class="group glass-panel p-6 rounded-lg border border-white/5 hover:border-white transition-all relative overflow-hidden">
+                    <div class="text-slate-600 font-mono text-xs mb-4">08</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Custom</h3>
+                    <p class="text-sm text-slate-400" data-i18n="srv.8">If it's web-based, let's talk.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NO SPECS SECTION (Playful) -->
+    <section class="py-20 bg-dark-900 reveal">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-block bg-dark-800 border border-slate-700 p-4 rounded-md font-mono text-sm text-start mb-8 shadow-lg" dir="ltr">
+                <div class="text-slate-400">> project.requirements</div>
+                <div class="text-red-400 mt-2">Error: No specs document found.</div>
+                <div class="text-slate-300 mt-2">Continue without specs? [Y/n] <span class="text-brand-cyan">Y</span><span class="cursor"></span></div>
+            </div>
+            
+            <h2 class="text-3xl font-bold text-white mb-4" data-i18n="nospec.title">Vous n'avez pas de cahier des charges ?</h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-8" data-i18n="nospec.desc">
+                Pas besoin d'avoir tout préparé. Expliquez simplement votre idée avec vos mots. On peut commencer par définir les fonctionnalités essentielles ensemble.
+            </p>
+            <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" class="text-brand-cyan font-mono hover:text-white transition-colors border-b border-brand-cyan/30 hover:border-white pb-1" data-i18n="nospec.cta">Explain my idea →</a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 reveal">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-white mb-12" data-i18n="faq.title">Questions Fréquentes</h2>
+
+            <div class="space-y-4">
+                
+                <!-- FAQ Item 1 -->
+                <div class="bg-dark-800 border border-slate-800 rounded-lg overflow-hidden faq-item cursor-pointer hover:border-slate-600 transition-colors">
+                    <div class="p-4 flex items-center text-white font-medium">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-brand-cyan mr-3 ltr-icon"></i>
+                        <i data-lucide="chevron-left" class="w-5 h-5 text-brand-cyan ml-3 rtl-icon hidden"></i>
+                        <span data-i18n="faq.q1">Comment savoir où sont passées mes heures ?</span>
+                    </div>
+                    <div class="p-4 pt-0 text-slate-400 font-sans hidden faq-answer" data-i18n="faq.a1">
+                        Chaque tâche est évaluée et le temps utilisé est suivi. Vous avez accès à un récapitulatif clair de ce qui a été fait et du temps consommé.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-dark-800 border border-slate-800 rounded-lg overflow-hidden faq-item cursor-pointer hover:border-slate-600 transition-colors">
+                    <div class="p-4 flex items-center text-white font-medium">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-brand-cyan mr-3 ltr-icon"></i>
+                        <i data-lucide="chevron-left" class="w-5 h-5 text-brand-cyan ml-3 rtl-icon hidden"></i>
+                        <span data-i18n="faq.q2">Et si une tâche prend plus de temps ?</span>
+                    </div>
+                    <div class="p-4 pt-0 text-slate-400 font-sans hidden faq-answer" data-i18n="faq.a2">
+                        Si une tâche s'avère plus complexe que prévu, vous êtes informé avant que le temps ne soit dépassé. Vous décidez si on continue ou si on simplifie la fonctionnalité.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-dark-800 border border-slate-800 rounded-lg overflow-hidden faq-item cursor-pointer hover:border-slate-600 transition-colors">
+                    <div class="p-4 flex items-center text-white font-medium">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-brand-cyan mr-3 ltr-icon"></i>
+                        <i data-lucide="chevron-left" class="w-5 h-5 text-brand-cyan ml-3 rtl-icon hidden"></i>
+                        <span data-i18n="faq.q3">Est-ce que mon projet sera forcément terminé ?</span>
+                    </div>
+                    <div class="p-4 pt-0 text-slate-400 font-sans hidden faq-answer" data-i18n="faq.a3">
+                        Le nombre d'heures est garanti. La quantité de fonctionnalités terminées dépend de leur complexité. C'est pourquoi on commence toujours par le plus important (MVP).
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-dark-800 border border-slate-800 rounded-lg overflow-hidden faq-item cursor-pointer hover:border-slate-600 transition-colors">
+                    <div class="p-4 flex items-center text-white font-medium">
+                        <i data-lucide="chevron-right" class="w-5 h-5 text-brand-cyan mr-3 ltr-icon"></i>
+                        <i data-lucide="chevron-left" class="w-5 h-5 text-brand-cyan ml-3 rtl-icon hidden"></i>
+                        <span data-i18n="faq.q4">Est-ce que le pack signifie disponibilité 24/7 ?</span>
+                    </div>
+                    <div class="p-4 pt-0 text-slate-400 font-sans hidden faq-answer" data-i18n="faq.a4">
+                        Non. Il représente du temps de développement effectif, planifié pendant les jours ouvrables, pas une disponibilité permanente pour de l'assistance immédiate.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA & CONTACT -->
+    <section id="contact" class="py-24 border-t border-white/5 bg-[#050816] relative reveal overflow-hidden">
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-96 bg-brand-cyan/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            
+            <div class="text-center mb-12">
+                <div class="inline-block border border-brand-cyan/30 bg-brand-cyan/5 rounded-lg p-6 sm:p-8 mb-8 backdrop-blur-sm" dir="ltr">
+                    <div class="font-mono text-sm sm:text-base text-start">
+                        <div class="text-slate-500 mb-4">> fikra.start()</div>
+                        <div class="text-green-400 mb-2">Idea detected.</div>
+                        <div class="text-white mb-6">Ready to build.</div>
+                        <div class="text-brand-cyan animate-pulse">[ YES, LET'S BUILD ]</div>
+                    </div>
+                </div>
+                
+                <h2 class="text-4xl font-bold text-white mb-4" data-i18n="cta.title">Votre idée est prête. Et vous ?</h2>
+                <p class="text-slate-400" data-i18n="cta.sub">Expliquez-moi simplement ce que vous voulez construire.</p>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 max-w-2xl mx-auto">
+                <a href="https://wa.me/213552791423" target="_blank" rel="noopener noreferrer" class="group bg-[#0B1220] border border-slate-700 rounded-xl p-6 text-left hover:border-green-500/60 hover:bg-green-500/5 transition-all">
+                    <div class="flex items-center gap-3 text-green-400 mb-3">
+                        <i data-lucide="message-circle" class="w-6 h-6"></i>
+                        <span class="font-mono text-sm uppercase tracking-[0.2em]">WhatsApp</span>
+                    </div>
+                    <p class="text-slate-300 text-sm">Contactez-moi directement pour discuter de votre projet.</p>
+                </a>
+
+                <a href="https://www.facebook.com/people/Fikra-Web/61594375614186/" target="_blank" rel="noopener noreferrer" class="group bg-[#0B1220] border border-slate-700 rounded-xl p-6 text-left hover:border-brand-blue/60 hover:bg-brand-blue/5 transition-all">
+                    <div class="flex items-center gap-3 text-brand-blue mb-3">
+                        <i data-lucide="facebook" class="w-6 h-6"></i>
+                        <span class="font-mono text-sm uppercase tracking-[0.2em]">Facebook</span>
+                    </div>
+                    <p class="text-slate-300 text-sm">Suivez la page Fikra Web et envoyez un message.</p>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="py-8 border-t border-white/5 text-center font-mono text-xs text-slate-600">
+        <p data-i18n="footer.text">© 2026 Fikra Web. Votre idée, notre code.</p>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.querySelector('.faq-answer');
+                const isHidden = answer.classList.contains('hidden');
+                
+                // Close others
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.add('hidden'));
+                document.querySelectorAll('.faq-item i.lucide-chevron-down').forEach(icon => {
+                    icon.classList.remove('lucide-chevron-down');
+                    icon.classList.add(document.documentElement.dir === 'rtl' ? 'lucide-chevron-left' : 'lucide-chevron-right');
+                });
+                
+                if (isHidden) {
+                    answer.classList.remove('hidden');
+                    // simple icon rotation logic could go here
+                }
+            });
+        });
+
+        // Terminal Output Animation Simulation
+        const lines = [
+            "> initializing project...",
+            "> analyzing requirements...",
+            "> building core features...",
+            "> testing...",
+            "> <span class='text-green-400'>deployment ready ✓</span>"
+        ];
+        const outputDiv = document.getElementById('terminal-output');
+        let lineIndex = 0;
+
+        function showNextLine() {
+            if (lineIndex < lines.length) {
+                const p = document.createElement('div');
+                p.innerHTML = lines[lineIndex];
+                p.className = 'text-slate-500 mb-1';
+                outputDiv.appendChild(p);
+                lineIndex++;
+                setTimeout(showNextLine, 800);
+            }
+        }
+        setTimeout(showNextLine, 1500);
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+
+        // --- MULTILINGUAL SYSTEM ---
+        const translations = {
+            fr: {
+                "nav.how": "Comment ça marche", "nav.packs": "Packs", "nav.services": "Services", "nav.faq": "FAQ", "nav.cta": "Démarrer l'idée",
+                "hero.badge": "> idea.status = READY_TO_BUILD",
+                "hero.h1_1": "Votre idée mérite plus qu'un devis.", "hero.h1_2": "Elle mérite d'être construite.",
+                "hero.desc": "Achetez simplement le temps de développement dont vous avez besoin et utilisez-le pour construire les fonctionnalités les plus importantes de votre projet.",
+                "hero.btn1": "Voir les packs", "hero.btn2": "Parler de mon idée",
+                "problem.title": "Vous avez une idée. Le problème, c'est le budget.",
+                "problem.e1": "Projet évalué trop cher dès le départ.", "problem.e2": "Cahier des charges compliqué exigé.", "problem.e3": "Impossible de savoir si l'idée fonctionnera avant de payer.",
+                "problem.sol_desc": "Au lieu de payer un gros projet dès le départ, commencez avec le temps de développement dont vous avez réellement besoin.",
+                "concept.title": "Development as Time.",
+                "concept.s1": "VOTRE IDÉE", "concept.s2": "TEMPS DEV", "concept.s3": "FONCTIONS", "concept.s4": "PRODUIT",
+                "concept.desc": "Vous choisissez un pack d'heures. Vous définissez vos priorités. Le temps est utilisé pour développer les fonctionnalités nécessaires. Vous suivez ce qui a été réalisé.",
+                "pricing.title": "Choisissez votre temps de développement.",
+                "pricing.sub": "Commencez petit. Construisez progressivement.",
+                "pricing.btn1": "Commencer →", "pricing.btn2": "Construire avec moi →", "pricing.btn3": "Passer Pro →",
+                "pricing.custom": "Besoin de plus ? Temps de développement sur mesure disponible. ", "pricing.custom_link": "Parlons-en",
+                "pricing.disclaimer1": "Vous achetez du temps de développement. Vous décidez des priorités. Vous voyez ce qui est fait. Vous savez combien de temps il reste.",
+                "pricing.disclaimer2": "Les packs représentent un nombre d'heures. Lorsque les heures sont consommées, vous décidez simplement si vous souhaitez continuer avec un nouveau pack. Pas de mauvaises surprises.",
+                "dash.title": "Vous voulez savoir où passent vos heures ?",
+                "dash.sub": "Normal. C'est pour ça que chaque tâche est suivie. Vous avez une visibilité totale sur l'avancement.",
+                "services.title": "Qu'est-ce qu'on peut construire ?",
+                "srv.1": "Sites web modernes et vitrines.", "srv.2": "Boutiques en ligne et e-commerce.", "srv.3": "Applications sur mesure.", "srv.6": "Création de la première version.",
+                "nospec.title": "Vous n'avez pas de cahier des charges ?",
+                "nospec.desc": "Pas besoin d'avoir tout préparé. Expliquez simplement votre idée avec vos mots. On peut commencer par définir les fonctionnalités essentielles ensemble.",
+                "nospec.cta": "Expliquer mon idée →",
+                
+                "faq.title": "Questions Fréquentes",
+                "faq.q1": "Comment savoir où sont passées mes heures ?",
+                "faq.a1": "Chaque tâche est évaluée et le temps utilisé est suivi. Vous avez accès à un récapitulatif clair.",
+                "faq.q2": "Et si une tâche prend plus de temps ?",
+                "faq.a2": "Si une tâche s'avère plus complexe que prévu, vous êtes informé avant que le temps ne soit dépassé.",
+                "faq.q3": "Est-ce que mon projet sera forcément terminé ?",
+                "faq.a3": "Le nombre d'heures est garanti. La quantité de fonctionnalités terminées dépend de leur complexité.",
+                "faq.q4": "Est-ce que le pack signifie disponibilité 24/7 ?",
+                "faq.a4": "Non. Il représente du temps de développement effectif, pas une disponibilité permanente pour de l'assistance 24/7.",
+                
+                "cta.title": "Votre idée est prête. Et vous ?",
+                "cta.sub": "Expliquez-moi simplement ce que vous voulez construire.",
+                
+                "form.name": "'Votre nom'",
+                "form.email": "'Email ou Téléphone'",
+                "form.company": "'Nom du projet ou entreprise (optionnel)'",
+                "form.message": "Parlez-moi de votre idée, du pack qui vous intéresse, ou posez vos questions...",
+                "form.btn": "ENVOYER_MESSAGE()",
+                
+                "footer.text": "© 2026 Fikra Web. Votre idée, notre code."
+            },
+            en: {
+                "nav.how": "How it works", "nav.packs": "Packs", "nav.services": "Services", "nav.faq": "FAQ", "nav.cta": "Start your idea",
+                "hero.badge": "> idea.status = READY_TO_BUILD",
+                "hero.h1_1": "Your idea deserves more than a quote.", "hero.h1_2": "It deserves to be built.",
+                "hero.desc": "Simply buy the development time you need and use it to build the most important features of your project.",
+                "hero.btn1": "View packs", "hero.btn2": "Discuss my idea",
+                "problem.title": "You have an idea. The problem is the budget.",
+                "problem.e1": "Project is too expensive from the start.", "problem.e2": "Complicated specs required.", "problem.e3": "Impossible to know if the idea works before paying.",
+                "problem.sol_desc": "Instead of paying for a huge project upfront, start with the development time you actually need.",
+                "concept.title": "Development as Time.",
+                "concept.s1": "YOUR IDEA", "concept.s2": "DEV TIME", "concept.s3": "FEATURES", "concept.s4": "PRODUCT",
+                "concept.desc": "Choose a time pack. Define your priorities. Time is used to develop needed features. You track what's done.",
+                "pricing.title": "Choose your development time.",
+                "pricing.sub": "Start small. Build progressively.",
+                "pricing.btn1": "Start →", "pricing.btn2": "Build with me →", "pricing.btn3": "Go Pro →",
+                "pricing.custom": "Need more? Custom development time available. ", "pricing.custom_link": "Let's talk",
+                "pricing.disclaimer1": "You buy development time. You decide what we prioritize. You see what gets done. You know how much time remains.",
+                "pricing.disclaimer2": "Packs represent a number of hours. When consumed, you simply decide if you want to continue with a new pack. No bad surprises.",
+                "dash.title": "Want to know where your hours go?",
+                "dash.sub": "Makes sense. That's why every task is tracked. You have full visibility on progress.",
+                "services.title": "What can we build?",
+                "srv.1": "Modern websites and pages.", "srv.2": "Online stores and e-commerce.", "srv.3": "Custom web applications.", "srv.6": "Build the first usable version.",
+                "nospec.title": "Don't have a requirements document?",
+                "nospec.desc": "No need to have everything prepared. Simply explain your idea in your own words. We can start by defining the core features together.",
+                "nospec.cta": "Explain my idea →",
+                
+                "faq.title": "Frequently Asked Questions",
+                "faq.q1": "How do I know where my hours went?",
+                "faq.a1": "Every task is tracked and time used is recorded. You get a clear summary.",
+                "faq.q2": "What if a task takes longer than expected?",
+                "faq.a2": "If a task takes longer than expected, you are informed before exceeding available time.",
+                "faq.q3": "Is my project guaranteed to be completed?",
+                "faq.a3": "The amount of hours is guaranteed. The number of features depends on complexity.",
+                "faq.q4": "Does the pack mean 24/7 availability?",
+                "faq.a4": "No. It represents actual development time, not 24/7 support availability.",
+                
+                "cta.title": "Your idea is ready. Are you?",
+                "cta.sub": "Just tell me what you want to build.",
+                
+                "form.name": "'Your name'",
+                "form.email": "'Email or Phone'",
+                "form.company": "'Project or company name (optional)'",
+                "form.message": "Tell me about your idea, the pack you want, or ask your questions...",
+                "form.btn": "SEND_MESSAGE()",
+                
+                "footer.text": "© 2026 Fikra Web. Your idea, our code."
+            },
+            ar: {
+                "nav.how": "كيف نعمل", "nav.packs": "الباقات", "nav.services": "الخدمات", "nav.faq": "الأسئلة", "nav.cta": "ابدأ فكرتك",
+                "hero.badge": "> حالة_الفكرة = جاهزة_للبناء",
+                "hero.h1_1": "فكرتك تستاهل أكثر من مجرد عرض سعر.", "hero.h1_2": "خلينا نبنيوها.",
+                "hero.desc": "اشري وقت التطوير اللي تحتاجه واستعمله باش تبني أهم الخصائص في مشروعك، بدون ما تدفع مبالغ ضخمة من البداية.",
+                "hero.btn1": "شوف الباقات", "hero.btn2": "نحكيو على فكرتي",
+                "problem.title": "عندك فكرة. المشكل في الميزانية.",
+                "problem.e1": "المشروع غالي بزاف من البداية.", "problem.e2": "يطلبو دفتر شروط معقد.", "problem.e3": "ماتقدرش تعرف إذا الفكرة تنجح قبل ما تخلص.",
+                "problem.sol_desc": "في بلاصة ما تخلص مشروع كبير، ابدأ بوقت التطوير اللي تحتاجه صح.",
+                "concept.title": "التطوير بالوقت.",
+                "concept.s1": "فكرتك", "concept.s2": "وقت التطوير", "concept.s3": "الخصائص", "concept.s4": "المنتج",
+                "concept.desc": "تخير باقة ساعات. تحدد الأولويات. الوقت يستعمل باش نبنيو واش تحتاج. وتبع واش تخدم.",
+                "pricing.title": "اختار وقت التطوير ديالك.",
+                "pricing.sub": "ابدأ صغير. وابني بالشوية.",
+                "pricing.btn1": "ابدأ →", "pricing.btn2": "ابني معايا →", "pricing.btn3": "روح للبرو →",
+                "pricing.custom": "تحتاج أكثر؟ وقت تطوير مخصص متوفر. ", "pricing.custom_link": "نتواصلو",
+                "pricing.disclaimer1": "تشري وقت. تقرر واش نسبقو. تشوف واش تخدم. وتعرف شحال بقالك وقت.",
+                "pricing.disclaimer2": "الباقات هي عدد ساعات. كي يخلصو، تقرر إذا تكمل بباقة جديدة ولا تحبس. ماكانش مفاجآت.",
+                "dash.title": "حاب تعرف وين راحو سوايعك؟",
+                "dash.sub": "حاجة باينة. على بيها كل مهمة محسوبة بالوقت. وتكون عندك رؤية واضحة.",
+                "services.title": "واش نقدرو نبنيو؟",
+                "srv.1": "مواقع حديثة.", "srv.2": "متاجر إلكترونية.", "srv.3": "تطبيقات ويب مخصصة.", "srv.6": "أول نسخة من فكرتك (MVP).",
+                "nospec.title": "ما عندكش دفتر شروط؟",
+                "nospec.desc": "ماشي شرط توجد كلش. اشرحلي فكرتك بكلماتك. نقدرو نبداو نحددو الخصائص الأساسية مع بعض.",
+                "nospec.cta": "نشرح فكرتي ←",
+                
+                "faq.title": "أسئلة شائعة",
+                "faq.q1": "كيفاش نعرف وين راحو الساعات دياولي؟",
+                "faq.a1": "كل مهمة تتقيم ويتحسب وقتها. وتشوف ملخص واضح.",
+                "faq.q2": "واش يصرى إذا مهمة دات وقت أكثر من المتوقع؟",
+                "faq.a2": "إذا كانت مهمة معقدة وتدي وقت أكثر، نعلمك قبل ما نتجاوزو الوقت المتاح.",
+                "faq.q3": "هل المشروع ديالي مضمون يكمل؟",
+                "faq.a3": "عدد الساعات مضمون. بصح شحال من حاجة تكمل تعتمد على صعوبتها.",
+                "faq.q4": "هل الباقة تعني أنكم متوفرين 24/7؟",
+                "faq.a4": "لا. الباقة تمثل وقت تطوير فعلي، ماشي توفر 24/7.",
+                
+                "cta.title": "فكرتك واجدة. وانت؟",
+                "cta.sub": "اشرحلي برك واش حاب تبني.",
+                
+                "form.name": "'الاسم ديالك'",
+                "form.email": "'الإيميل ولا رقم الهاتف'",
+                "form.company": "'اسم المشروع ولا الشركة (اختياري)'",
+                "form.message": "احكيلي على فكرتك، الباقة اللي مهتم بيها، ولا اطرح أسئلتك...",
+                "form.btn": "إرسال_الرسالة()",
+                
+                "footer.text": "© 2026 Fikra Web. فكرتك، الكود ديالنا."
+            }
+        };
+
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            const isRtl = lang === 'ar';
+            document.documentElement.dir = isRtl ? 'rtl' : 'ltr';
+            
+            if (isRtl) {
+                document.body.classList.remove('font-sans');
+                document.body.classList.add('font-ar');
+                document.querySelectorAll('.ltr-icon').forEach(el => el.classList.add('hidden'));
+                document.querySelectorAll('.rtl-icon').forEach(el => el.classList.remove('hidden'));
+            } else {
+                document.body.classList.add('font-sans');
+                document.body.classList.remove('font-ar');
+                document.querySelectorAll('.ltr-icon').forEach(el => el.classList.remove('hidden'));
+                document.querySelectorAll('.rtl-icon').forEach(el => el.classList.add('hidden'));
+            }
+
+            // Text translations
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Placeholder translations
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang] && translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+            
+            // Re-render form status if active
+            const statusEl = document.getElementById("formStatus");
+            if (statusEl.textContent !== "") {
+               statusEl.textContent = ""; 
+            }
+        }
+    </script>
+</body>
+</html>
