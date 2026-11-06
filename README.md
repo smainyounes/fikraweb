@@ -18,6 +18,7 @@ node build.mjs --serve    # builds, then previews at http://localhost:4173
 | Products: names, industries, texts, colours, **prices**, WhatsApp message per product | `src/config/products.js` |
 | Homepage texts and sections | `src/pages/home.js` |
 | Product pages: audience, problems, features, gallery, FAQ… | `src/content/products/<product>.js` |
+| Custom development: capabilities, process, project types, ERP case study | `src/content/custom.js` |
 | Screenshot slots: what to add, file names, status | `docs/screenshot-slots.md` (generated) |
 | Header, footer, page `<head>` | `src/components/layout.js` |
 | Buttons, prices, screenshot slots, icons | `src/components/ui.js` |
@@ -51,7 +52,8 @@ repository. Commit the generated files after each build. `robots.txt` asks searc
 
 - Stage 1 (audit and design direction): done, see `docs/`.
 - Stage 2 (homepage): done and approved.
-- Stage 3 (product listing + six product pages): done, waiting for review. Product page texts are in `src/content/products/`.
-- Next: the custom development page, then pricing, method, FAQ and contact.
+- Stage 3 (product listing + six product pages): done and approved.
+- Stage 4 (custom development page, ERP case study, enquiry form): done, waiting for review.
+- Next: pricing, method, FAQ and contact pages.
 
 The previous one-page site has been replaced. To see it again: `git show f8a95d6:index.html > old-index.html`.

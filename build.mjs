@@ -21,6 +21,7 @@ import { layout } from './src/components/layout.js';
 import home from './src/pages/home.js';
 import productsPage from './src/pages/products.js';
 import productPages from './src/pages/product.js';
+import customPage from './src/pages/custom.js';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SRC = join(ROOT, 'src');
@@ -32,7 +33,7 @@ const MANIFEST = join(ROOT, '.build-manifest.json');
 const REPLACEABLE = new Set(['index.html']);
 
 // Pages are added here as each stage is built. A page function may return one page or a list.
-const PAGES = [home, productsPage, productPages];
+const PAGES = [home, productsPage, productPages, customPage];
 
 // ---------------------------------------------------------------- clean previous output
 const previous = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : { files: [] };
@@ -97,10 +98,17 @@ const assetVersion = createHash('sha1')
 // ---------------------------------------------------------------- pages
 const outFile = (path) => join(OUT, path.endsWith('/') ? `${path}index.html` : path);
 const built = [];
+// French typography: a no-break space before ? ! : ; » and after «, in visible text only
+// (the lookahead keeps it out of tags and attributes), so "spécifique ?" never wraps alone.
+const frenchSpaces = (html) =>
+  html
+    .replace(/ ([?!:;»])(?=[^<>]*<)/g, '\u00A0$1')
+    .replace(/« (?=[^<>]*<)/g, '«\u00A0');
+
 for (const make of PAGES) {
   for (const p of [make()].flat()) {
     const page = { ...p, assetVersion };
-    write(outFile(page.path), layout(page));
+    write(outFile(page.path), frenchSpaces(layout(page)));
     built.push(page);
   }
 }

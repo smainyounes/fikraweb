@@ -1,6 +1,8 @@
 import { site } from '../config/site.js';
 import { products, productUrl, productStyle, lowestSetup } from '../config/products.js';
 import { esc, icon, money, button, waButton, arrowLink, screenshot, price, wa } from '../components/ui.js';
+import { erpFlowFigure } from '../components/sections.js';
+import { homeCapabilities as capabilities } from '../content/custom.js';
 
 const byId = Object.fromEntries(products.map((p) => [p.id, p]));
 
@@ -12,30 +14,6 @@ const strengths = [
   { icon: 'settings', title: 'Installation personnalisée', text: 'Nous installons et configurons le logiciel avec votre nom, votre logo et vos paramètres.' },
   { icon: 'graduation-cap', title: 'Formation et accompagnement', text: 'Votre équipe est formée à l’utilisation, pour démarrer rapidement et sans erreur.' },
   { icon: 'headset', title: 'Support local sur WhatsApp', text: 'Une question, un blocage ? Vous écrivez directement à l’équipe qui a conçu le logiciel.' },
-];
-
-const capabilities = [
-  { icon: 'layout-dashboard', title: 'ERP et systèmes de gestion', text: 'Un seul outil pour relier les services de l’entreprise.' },
-  { icon: 'boxes', title: 'Stock et inventaire', text: 'Entrées, sorties, dépôts et inventaires.' },
-  { icon: 'factory', title: 'Gestion de production', text: 'Nomenclatures, ordres de fabrication, suivi.' },
-  { icon: 'receipt', title: 'Ventes, achats et facturation', text: 'Devis, commandes, bons de livraison, factures.' },
-  { icon: 'users', title: 'Employés et pointage', text: 'Présences, congés, paie et avances.' },
-  { icon: 'chart-column', title: 'Tableaux de bord et rapports', text: 'Les chiffres utiles, au bon moment.' },
-  { icon: 'workflow', title: 'Automatisation', text: 'Moins de saisies répétées, moins d’oublis.' },
-  { icon: 'app-window', title: 'Applications web sur mesure', text: 'Plateformes internes ou ouvertes à vos clients.' },
-];
-
-const erpFlow = [
-  { title: 'Achats & fournisseurs', text: 'Commandes, réceptions' },
-  { title: 'Stock multi-dépôts', text: 'Mouvements, inventaire' },
-  { title: 'Production', text: 'Nomenclatures, ordres de fabrication' },
-  { title: 'Ventes & livraisons', text: 'Proformas, bons de livraison' },
-  { title: 'Caisse', text: 'Encaissements, trésorerie' },
-];
-const erpPeople = [
-  { title: 'Employés', text: 'Fiches, équipes' },
-  { title: 'Pointage', text: 'Import de la pointeuse' },
-  { title: 'Paie', text: 'Salaires, avances, congés' },
 ];
 
 const steps = [
@@ -197,16 +175,7 @@ const caseStudy = () => `
         <div><h3>Ce que cela démontre</h3><p>Notre capacité à analyser une organisation complète et à livrer un système de gestion complexe, module par module.</p></div>
         ${waButton('Bonjour, j’ai un projet de logiciel sur mesure, comparable à un ERP.', 'Un projet similaire ? Parlons-en', 'secondary')}
       </div>
-      <figure class="flow reveal" aria-label="Modules de l’ERP et circulation des informations">
-        <ol class="flow-row">${erpFlow
-          .map((f, i) => `<li><span class="flow-n">${String(i + 1).padStart(2, '0')}</span><strong>${esc(f.title)}</strong><span>${esc(f.text)}</span></li>`)
-          .join('')}</ol>
-        <ol class="flow-row flow-row-people">${erpPeople
-          .map((f, i) => `<li><span class="flow-n">${String(i + 6).padStart(2, '0')}</span><strong>${esc(f.title)}</strong><span>${esc(f.text)}</span></li>`)
-          .join('')}</ol>
-        <div class="flow-base"><strong>Rapports, rôles et permissions</strong><span>Journal d’activité · sauvegardes · aide intégrée</span></div>
-        <figcaption>Les modules réalisés pour ce projet. Aucune donnée ni information du client n’est publiée.</figcaption>
-      </figure>
+      ${erpFlowFigure()}
     </div>
   </div>
 </section>`;

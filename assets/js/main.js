@@ -110,6 +110,66 @@
     }));
   });
 
+  // ---------- project enquiry form → WhatsApp (or e-mail) ----------
+  $$('[data-project-form]').forEach((form) => {
+    const fields = {
+      name: { el: form.elements.name, ok: (v) => v.trim().length >= 2 },
+      phone: { el: form.elements.phone, ok: (v) => { const d = v.replace(/\D/g, ''); return d.length >= 9 && d.length <= 13; } },
+      type: { el: form.elements.type, ok: (v) => v !== '' },
+      description: { el: form.elements.description, ok: (v) => v.trim().length >= 20 },
+    };
+    const showError = (f, bad) => {
+      f.el.setAttribute('aria-invalid', String(bad));
+      const err = document.getElementById(`${f.el.id}-err`);
+      if (err) err.hidden = !bad;
+    };
+    // re-validate a field once the visitor has been told it was wrong
+    Object.values(fields).forEach((f) => f.el.addEventListener('input', () => {
+      if (f.el.getAttribute('aria-invalid') === 'true') showError(f, !f.ok(f.el.value));
+    }));
+    const validate = () => {
+      let first = null;
+      Object.values(fields).forEach((f) => {
+        const bad = !f.ok(f.el.value);
+        showError(f, bad);
+        if (bad && !first) first = f.el;
+      });
+      if (first) first.focus();
+      return !first;
+    };
+    const message = () => {
+      const v = (n) => form.elements[n].value.trim();
+      return [
+        'Bonjour FikraWeb, j’ai un projet de logiciel sur mesure.',
+        '',
+        `Nom : ${v('name')}`,
+        v('company') ? `Entreprise : ${v('company')}` : null,
+        `Téléphone : ${v('phone')}`,
+        `Type de projet : ${v('type')}`,
+        '',
+        'Mon besoin :',
+        v('description'),
+      ].filter((l) => l !== null).join('\n');
+    };
+    const done = $('.pform-done', form);
+    const fallback = $('[data-wa-fallback]', form);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+      const url = `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(message())}`;
+      if (fallback) fallback.href = url;
+      if (done) done.hidden = false;
+      window.open(url, '_blank', 'noopener');
+    });
+    const emailBtn = $('[data-send-email]', form);
+    if (emailBtn) emailBtn.addEventListener('click', () => {
+      if (!validate()) return;
+      const subject = `Projet sur mesure : ${form.elements.type.value}`;
+      window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message())}`;
+    });
+  });
+
   // ---------- reveal on scroll ----------
   const reveals = $$('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion.matches) {

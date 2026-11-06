@@ -2,6 +2,7 @@
 import { site } from '../config/site.js';
 import { products, productUrl, productStyle } from '../config/products.js';
 import { esc, icon, money, waButton, button, arrowLink } from './ui.js';
+import { erpFlow, erpPeople } from '../content/custom.js';
 
 const absolute = (path) => (site.url.startsWith('http') ? `${site.url}${path}` : path);
 
@@ -76,4 +77,18 @@ export function relatedProducts(ids, { title = 'Découvrez aussi' } = {}) {
     <div class="pcard-grid reveal">${list.map((p) => productCard(p)).join('')}</div>
   </div>
 </section>`;
+}
+
+// ERP case study: modules and how information flows between them.
+export function erpFlowFigure() {
+  return `<figure class="flow reveal" aria-label="Modules de l’ERP et circulation des informations">
+        <ol class="flow-row">${erpFlow
+          .map((f, i) => `<li><span class="flow-n">${String(i + 1).padStart(2, '0')}</span><strong>${esc(f.title)}</strong><span>${esc(f.text)}</span></li>`)
+          .join('')}</ol>
+        <ol class="flow-row flow-row-people">${erpPeople
+          .map((f, i) => `<li><span class="flow-n">${String(i + 6).padStart(2, '0')}</span><strong>${esc(f.title)}</strong><span>${esc(f.text)}</span></li>`)
+          .join('')}</ol>
+        <div class="flow-base"><strong>Rapports, rôles et permissions</strong><span>Journal d’activité · sauvegardes · aide intégrée</span></div>
+        <figcaption>Les modules réalisés pour ce projet. Aucune donnée ni information du client n’est publiée.</figcaption>
+      </figure>`;
 }
