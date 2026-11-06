@@ -24,9 +24,9 @@ export const products = [
     category: 'Logiciel de gestion pour salons de beauté',
     headline: 'Votre salon organisé. Votre caisse maîtrisée.',
     summary:
-      'Rendez-vous, clients, prestations et caisse dans une seule application Windows, qui fonctionne entièrement hors ligne.',
+      'Rendez-vous, clients, prestations et caisse dans une seule application, sur PC Windows ou tablette Android, qui fonctionne entièrement hors ligne.',
     benefit: 'Une caisse contrôlée chaque soir, écarts compris.',
-    pricing: { setup: 29000, monthly: null, setupLabel: 'Licence à vie pour un ordinateur', note: 'Support optionnel : environ 6 000 DA/an' },
+    pricing: { setup: 29000, monthly: null, setupLabel: 'Licence à vie pour un appareil (PC Windows ou tablette Android)', note: 'Support optionnel : environ 6 000 DA/an' },
     shot: { id: 'salonpro-caisse', label: 'SalonPro · Caisse', frame: 'window' },
     whatsapp: 'Bonjour, je souhaite découvrir SalonPro.',
   },

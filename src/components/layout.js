@@ -134,7 +134,7 @@ ${canonical ? `<meta property="og:url" content="${esc(canonical)}">` : ''}
 <link rel="stylesheet" href="/assets/css/site.css?v=${page.assetVersion}">
 ${jsonld}
 </head>
-<body class="page-${page.id}">
+<body class="page-${page.id}" ${page.bodyAttrs || ''}>
 <a class="skip-link" href="#main">Aller au contenu</a>
 ${header(page)}
 <main id="main">

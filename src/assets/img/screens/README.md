@@ -3,19 +3,8 @@
 Put real screenshots here. A file whose name matches a slot replaces that slot's placeholder on the next
 `node build.mjs`. Accepted formats: `.avif`, `.webp` (recommended), `.png`, `.jpg`.
 
-Slots used on the homepage (more will be added with the product pages):
-
-| File name (without extension) | Where | Frame | Recommended size |
-|---|---|---|---|
-| `safardesk-tableau-de-bord` | Hero, large window | Browser | 1600 × 1040 |
-| `salonpro-planning` | Hero, front window | Windows app | 1600 × 1060 |
-| `matjarpro-boutique-mobile` | Hero, phone | Phone | 750 × 1580 |
-| `salonpro-caisse` | Showcase panel | Windows app | 1600 × 940 |
-| `garagepro-reparations` | Showcase panel | Browser | 1600 × 940 |
-| `carrentpro-reservations` | Showcase panel | Browser | 1600 × 940 |
-| `safardesk-reservations` | Showcase panel | Browser | 1600 × 940 |
-| `matjarpro-boutique` | Showcase panel | Browser | 1600 × 940 |
-| `catalogpro-listes-de-prix` | Showcase panel | Browser | 1600 × 940 |
+The full list of slots, with the file name to use for each one and whether it is already filled, is generated
+at every build in [docs/screenshot-slots.md](../../../../docs/screenshot-slots.md).
 
 Tips
 - Use demo data only: no real customer names, phone numbers or amounts.

@@ -15,6 +15,13 @@
     "assets/img/og-default.png",
     "assets/js/main.js",
     "index.html",
+    "logiciels/carrent-pro/index.html",
+    "logiciels/catalogpro/index.html",
+    "logiciels/garagepro/index.html",
+    "logiciels/index.html",
+    "logiciels/matjarpro/index.html",
+    "logiciels/safardesk/index.html",
+    "logiciels/salonpro/index.html",
     "robots.txt"
   ]
 }

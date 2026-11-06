@@ -97,6 +97,19 @@
     });
   });
 
+  // ---------- product listing: filter by sector ----------
+  // Without JavaScript the filters stay hidden and every product is listed.
+  $$('[data-filters]').forEach((bar) => {
+    bar.hidden = false;
+    const buttons = $$('[data-filter]', bar);
+    const blocks = $$('[data-group-block]');
+    buttons.forEach((btn) => btn.addEventListener('click', () => {
+      const f = btn.dataset.filter;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      blocks.forEach((bl) => { bl.hidden = f !== 'all' && bl.dataset.groupBlock !== f; });
+    }));
+  });
+
   // ---------- reveal on scroll ----------
   const reveals = $$('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion.matches) {
