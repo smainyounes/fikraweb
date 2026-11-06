@@ -1,0 +1,11 @@
+{
+  "name": "fikraweb-site",
+  "private": true,
+  "type": "module",
+  "description": "FikraWeb website: static HTML generated from src/ by build.mjs (no dependencies).",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --serve"
+  },
+  "engines": { "node": ">=18" }
+}
