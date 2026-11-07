@@ -27,6 +27,10 @@ import methodPage from './src/pages/method.js';
 import faqPage from './src/pages/faq.js';
 import contactPage from './src/pages/contact.js';
 import notFoundPage from './src/pages/notfound.js';
+import { LANGS, createTranslator } from './src/i18n/translate.js';
+import { en, ar, conflicts as i18nConflicts } from './src/i18n/dictionaries.js';
+
+const DICTS = { ar, en };
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SRC = join(ROOT, 'src');
@@ -110,13 +114,35 @@ const frenchSpaces = (html) =>
     .replace(/ ([?!:;»])(?=[^<>]*<)/g, '\u00A0$1')
     .replace(/« (?=[^<>]*<)/g, '«\u00A0');
 
+// Every page is written in French, then translated: /ar/… (Arabic, right-to-left) and /en/… (English).
+const missing = { ar: new Map(), en: new Map() };
+const translators = Object.fromEntries(
+  ['ar', 'en'].map((lang) => [
+    lang,
+    createTranslator({
+      lang,
+      dict: DICTS[lang],
+      siteUrl: isSet(site.url) ? site.url : '',
+      onMissing: (key, where) => { if (!missing[lang].has(key)) missing[lang].set(key, where); },
+    }),
+  ]),
+);
+
 for (const make of PAGES) {
   for (const p of [make()].flat()) {
-    const page = { ...p, assetVersion };
-    write(outFile(page.path), frenchSpaces(layout(page)));
-    built.push(page);
+    for (const lang of Object.keys(LANGS)) {
+      const page = { ...p, assetVersion, lang };
+      const html = layout(page);
+      const out = lang === 'fr' ? frenchSpaces(html) : translators[lang](html, page.path);
+      write(outFile(`${LANGS[lang].prefix}${page.path}`), out);
+      built.push({ ...page, path: `${LANGS[lang].prefix}${page.path}` });
+    }
   }
 }
+
+// Untranslated texts: listed in docs/i18n-missing.json (fallback: the French text is kept).
+const missingReport = Object.fromEntries(Object.entries(missing).map(([l, m]) => [l, Object.fromEntries(m)]));
+writeFileSync(join(ROOT, 'docs/i18n-missing.json'), JSON.stringify(missingReport, null, 2) + '\n');
 
 // ---------------------------------------------------------------- robots & sitemap
 if (isSet(site.url)) {
@@ -191,6 +217,8 @@ ${[...slots.entries()].sort().map(([id, s]) => `| \`${id}\` | ${s.label} | ${s.f
 `);
 
 console.log(`Built ${built.length} page(s) and ${written.length} file(s)  ·  assets v${assetVersion}`);
+if (i18nConflicts.length) console.log(`  ! Same French text translated differently: ${i18nConflicts.join(' | ')}`);
+console.log(`  · Translations missing: ar ${missing.ar.size}, en ${missing.en.size}${missing.ar.size + missing.en.size ? ' (list in docs/i18n-missing.json)' : ''}.`);
 console.log(`  · Screenshot slots: ${filledCount}/${slots.size} filled (list in docs/screenshot-slots.md).`);
 if (!isSet(site.url)) console.log('  ! site.url is not set (src/config/site.js): canonical URLs and sitemap.xml are skipped.');
 if (pending.size) console.log(`  · Links to pages not built yet: ${[...pending.keys()].sort().join('  ')}`);

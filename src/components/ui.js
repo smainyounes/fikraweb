@@ -29,7 +29,7 @@ export function icon(name, { size = 20, cls = '', label = '' } = {}) {
     iconCache.set(name, inner);
   }
   const a11y = label ? `role="img" aria-label="${esc(label)}"` : 'aria-hidden="true" focusable="false"';
-  return `<svg class="icon ${cls}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ${a11y}>${iconCache.get(name)}</svg>`;
+  return `<svg class="icon i-${name} ${cls}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ${a11y}>${iconCache.get(name)}</svg>`;
 }
 
 // ---------- links & buttons ----------
@@ -74,7 +74,7 @@ export function screenshot({ id, label, frame = 'browser' }, { product = null, c
     const title = esc(label.split('·')[0].trim());
     return `<div class="frame frame-window ${cls}" ${style} ${shotAttr}><div class="frame-bar"><span class="frame-title">${title}</span><span class="frame-controls" aria-hidden="true"><i></i><i></i><i></i></span></div>${body}</div>`;
   }
-  return `<div class="frame frame-browser ${cls}" ${style} ${shotAttr}><div class="frame-bar"><span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="frame-url">${esc(label.toLowerCase())}</span></div>${body}</div>`;
+  return `<div class="frame frame-browser ${cls}" ${style} ${shotAttr}><div class="frame-bar"><span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="frame-url">${esc(label)}</span></div>${body}</div>`;
 }
 
 // ---------- price ----------

@@ -57,8 +57,13 @@
 /* ---------- header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: var(--header-bg); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
+}
+/* The blur sits on a layer behind the header: a backdrop-filter on the header itself would make it
+   the containing block of the fixed mobile menu, which would then no longer cover the screen. */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: var(--header-bg); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
 }
 .header-inner { height: var(--header-h); display: flex; align-items: center; gap: 24px; }
 .brand { display: inline-flex; flex: none; border-radius: 4px; }

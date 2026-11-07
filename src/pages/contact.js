@@ -85,7 +85,7 @@ export default function contactPage() {
       <a class="wa-card card card-glow" href="${esc(whatsappUrl())}" target="_blank" rel="noopener">
         <span class="wa-card-icon">${icon('message-circle', { size: 28 })}</span>
         <span class="wa-card-label">WhatsApp</span>
-        <strong class="wa-card-number">${esc(c.whatsappDisplay)}</strong>
+        <strong class="wa-card-number"><bdi dir="ltr">${esc(c.whatsappDisplay)}</bdi></strong>
         <span class="wa-card-cta">Écrire maintenant ${icon('arrow-right', { size: 16 })}</span>
       </a>
       <div class="topics">

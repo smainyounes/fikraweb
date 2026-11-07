@@ -205,7 +205,7 @@ const finalCta = () => `
       ${button({ href: '/logiciels/', label: 'Découvrir nos logiciels', variant: 'primary', iconEnd: 'arrow-right' })}
       ${button({ href: '/sur-mesure/#projet', label: 'Présenter mon projet', variant: 'secondary' })}
     </div>
-    <p class="final-wa">${icon('message-circle', { size: 16 })}<span>Ou écrivez-nous directement : <a href="${esc(wa(site.whatsappMessages.general))}" target="_blank" rel="noopener">${esc(site.contact.whatsappDisplay)}</a></span></p>
+    <p class="final-wa">${icon('message-circle', { size: 16 })}<span>Ou écrivez-nous directement : <a href="${esc(wa(site.whatsappMessages.general))}" target="_blank" rel="noopener"><bdi dir="ltr">${esc(site.contact.whatsappDisplay)}</bdi></a></span></p>
   </div></div>
 </section>`;
 

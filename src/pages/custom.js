@@ -159,7 +159,7 @@ export default function customPage() {
         <li>${icon('file-text', { size: 20 })}<span>Proposition et devis selon votre besoin</span></li>
         <li>${icon('shield-check', { size: 20 })}<span>Développement par étapes validées</span></li>
       </ul>
-      <p class="project-direct">Vous préférez écrire directement ? <a href="${esc(whatsappUrl(site.whatsappMessages.custom))}" target="_blank" rel="noopener">${esc(site.contact.whatsappDisplay)}</a></p>
+      <p class="project-direct">Vous préférez écrire directement ? <a href="${esc(whatsappUrl(site.whatsappMessages.custom))}" target="_blank" rel="noopener"><bdi dir="ltr">${esc(site.contact.whatsappDisplay)}</bdi></a></p>
     </div>
     <div class="reveal">${form()}</div>
   </div>

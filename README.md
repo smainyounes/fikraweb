@@ -36,10 +36,27 @@ going live: canonical URLs and `sitemap.xml` depend on it.
 
 The build checks every internal link and anchor, and lists pages that are linked but not built yet.
 
+## Languages: French, Arabic, English
+
+French is the source language and stays at the root (`/`, `/logiciels/…`). The build writes an Arabic
+version under `/ar/` (right-to-left) and an English version under `/en/`, with the same page addresses.
+
+- Pages are written in French. The build translates each French page using the tables in
+  `src/i18n/strings/` (one file per page group). Each row is `[French, English, Arabic]`, and the French
+  must match the text on the page exactly.
+- Placeholders cover repeated texts: `{money}` (a price, written `29 000 DA` / `29,000 DZD` / `29 000 دج`),
+  `{product}` (a product name) and `{year}`.
+- **When you change or add French text, run the build:** it lists every text that still needs a translation
+  in `docs/i18n-missing.json` and prints the count. Until a translation exists, the French text is shown.
+- The build also warns if the same French text is translated in two different ways.
+- The language switcher (header and mobile menu) links to the same page in the other languages, and every page
+  declares its alternate versions for search engines (`hreflang`).
+
 ## Generated files
 
 The build writes the site at the root of this folder, so it replaces the old site in place:
-`index.html`, `assets/`, one folder per page (`logiciels/`, `tarifs/`…), `robots.txt` and `sitemap.xml`.
+`index.html`, `assets/`, one folder per page (`logiciels/`, `tarifs/`…), the `ar/` and `en/` versions,
+`robots.txt` and `sitemap.xml`.
 These files are generated: edit `src/` and run the build again instead of editing them by hand.
 They are listed in `.build-manifest.json`, and the build only deletes or overwrites files from that list,
 so `src/`, `docs/` and the original logo files are never touched.
@@ -62,6 +79,7 @@ repository. Commit the generated files after each build. `robots.txt` asks searc
 - Stage 2 (homepage): done and approved.
 - Stage 3 (product listing + six product pages): done and approved.
 - Stage 4 (custom development page, ERP case study, enquiry form): done and approved.
-- Stage 5 (pricing, method, FAQ, contact, 404) and Stage 6 (final QA): done, waiting for review.
+- Stage 5 (pricing, method, FAQ, contact, 404) and Stage 6 (final QA): done and approved.
+- Translation into Arabic and English: done, waiting for review.
 
 The previous one-page site has been replaced. To see it again: `git show f8a95d6:index.html > old-index.html`.

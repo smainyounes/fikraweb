@@ -51,7 +51,7 @@ export function ctaBand({ title, text, message, label = 'Écrire sur WhatsApp', 
       ${waButton(message, label)}
       ${secondary ? button({ href: secondary.href, label: secondary.label, variant: 'secondary' }) : ''}
     </div>
-    <p class="cta-band-note">${icon('message-circle', { size: 16 })}<span>WhatsApp : <a href="https://wa.me/${site.contact.whatsapp}" target="_blank" rel="noopener">${esc(site.contact.whatsappDisplay)}</a></span></p>
+    <p class="cta-band-note">${icon('message-circle', { size: 16 })}<span>WhatsApp : <a href="https://wa.me/${site.contact.whatsapp}" target="_blank" rel="noopener"><bdi dir="ltr">${esc(site.contact.whatsappDisplay)}</bdi></a></span></p>
   </div></div>
 </section>`;
 }

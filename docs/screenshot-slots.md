@@ -8,31 +8,31 @@ it replaces the placeholder everywhere that slot is used.
 
 | File name (id) | Shows | Frame | Recommended size | Used on | Status |
 |---|---|---|---|---|---|
-| `carrentpro-contrat` | CarRent Pro · Contrat | browser | 1600 × 1000 | /logiciels/carrent-pro/ | to add |
-| `carrentpro-planning` | CarRent Pro · Planning | browser | 1600 × 1000 | /logiciels/carrent-pro/ | to add |
-| `carrentpro-reservations` | CarRent Pro · Réservations | browser | 1600 × 1000 | /, /logiciels/ | to add |
-| `carrentpro-site-public` | CarRent Pro · Site public | browser | 1600 × 1000 | /logiciels/carrent-pro/ | to add |
-| `carrentpro-tableau-de-bord` | CarRent Pro · Tableau de bord | browser | 1600 × 1000 | /logiciels/carrent-pro/ | to add |
-| `catalogpro-accueil` | CatalogPro · Site public | browser | 1600 × 1000 | /logiciels/catalogpro/ | to add |
-| `catalogpro-liste-client` | CatalogPro · Liste reçue par un client | browser | 1600 × 1000 | /logiciels/catalogpro/ | to add |
-| `catalogpro-listes-de-prix` | CatalogPro · Listes de prix | browser | 1600 × 1000 | /, /logiciels/, /logiciels/catalogpro/ | to add |
-| `catalogpro-produit` | CatalogPro · Fiche produit | browser | 1600 × 1000 | /logiciels/catalogpro/ | to add |
-| `garagepro-reparations` | GaragePro · Ordres de réparation | browser | 1600 × 1000 | /, /logiciels/, /logiciels/garagepro/ | to add |
-| `garagepro-site` | GaragePro · Site du garage | browser | 1600 × 1000 | /logiciels/garagepro/ | to add |
-| `garagepro-stock` | GaragePro · Pièces et stock | browser | 1600 × 1000 | /logiciels/garagepro/ | to add |
-| `garagepro-vehicule` | GaragePro · Fiche véhicule | browser | 1600 × 1000 | /logiciels/garagepro/ | to add |
-| `matjarpro-boutique` | MatjarPro · Boutique | browser | 1600 × 1000 | /, /logiciels/ | to add |
-| `matjarpro-boutique-mobile` | MatjarPro · Boutique | phone | 750 × 1600 | /, /logiciels/matjarpro/ | to add |
-| `matjarpro-commandes` | MatjarPro · Commandes | browser | 1600 × 1000 | /logiciels/matjarpro/ | to add |
-| `matjarpro-livraison` | MatjarPro · Livraison | browser | 1600 × 1000 | /logiciels/matjarpro/ | to add |
-| `matjarpro-protection` | MatjarPro · Protection | browser | 1600 × 1000 | /logiciels/matjarpro/ | to add |
-| `safardesk-chambres` | SafarDesk · Affectation des chambres | browser | 1600 × 1000 | /logiciels/safardesk/ | to add |
-| `safardesk-finances` | SafarDesk · Finances | browser | 1600 × 1000 | /logiciels/safardesk/ | to add |
-| `safardesk-reservation` | SafarDesk · Réservation | browser | 1600 × 1000 | /logiciels/safardesk/ | to add |
-| `safardesk-reservations` | SafarDesk · Réservations | browser | 1600 × 1000 | /, /logiciels/ | to add |
-| `safardesk-tableau-de-bord` | SafarDesk · Tableau de bord | browser | 1600 × 1000 | /, /logiciels/safardesk/ | to add |
-| `salonpro-caisse` | SalonPro · Caisse | window | 1600 × 1000 | /, /logiciels/, /logiciels/salonpro/ | to add |
-| `salonpro-cloture` | SalonPro · Clôture de caisse | window | 1600 × 1000 | /logiciels/salonpro/ | to add |
-| `salonpro-fiche-cliente` | SalonPro · Fiche cliente | window | 1600 × 1000 | /logiciels/salonpro/ | to add |
-| `salonpro-planning` | SalonPro · Planning | window | 1600 × 1000 | /, /logiciels/salonpro/ | to add |
-| `salonpro-tableau-de-bord` | SalonPro · Tableau de bord | window | 1600 × 1000 | /logiciels/salonpro/ | to add |
+| `carrentpro-contrat` | CarRent Pro · Contract | browser | 1600 × 1000 | /ar/logiciels/carrent-pro/, /en/logiciels/carrent-pro/, /logiciels/carrent-pro/ | to add |
+| `carrentpro-planning` | CarRent Pro · جدول المواعيد | browser | 1600 × 1000 | /ar/logiciels/carrent-pro/, /en/logiciels/carrent-pro/, /logiciels/carrent-pro/ | to add |
+| `carrentpro-reservations` | CarRent Pro · Réservations | browser | 1600 × 1000 | /, /ar/, /ar/logiciels/, /en/, /en/logiciels/, /logiciels/ | to add |
+| `carrentpro-site-public` | CarRent Pro · Public website | browser | 1600 × 1000 | /ar/logiciels/carrent-pro/, /en/logiciels/carrent-pro/, /logiciels/carrent-pro/ | to add |
+| `carrentpro-tableau-de-bord` | CarRent Pro · Tableau de bord | browser | 1600 × 1000 | /ar/logiciels/carrent-pro/, /en/logiciels/carrent-pro/, /logiciels/carrent-pro/ | to add |
+| `catalogpro-accueil` | CatalogPro · Public website | browser | 1600 × 1000 | /ar/logiciels/catalogpro/, /en/logiciels/catalogpro/, /logiciels/catalogpro/ | to add |
+| `catalogpro-liste-client` | CatalogPro · القائمة التي يتلقّاها الزبون | browser | 1600 × 1000 | /ar/logiciels/catalogpro/, /en/logiciels/catalogpro/, /logiciels/catalogpro/ | to add |
+| `catalogpro-listes-de-prix` | CatalogPro · Listes de prix | browser | 1600 × 1000 | /, /ar/, /ar/logiciels/, /ar/logiciels/catalogpro/, /en/, /en/logiciels/, /en/logiciels/catalogpro/, /logiciels/, /logiciels/catalogpro/ | to add |
+| `catalogpro-produit` | CatalogPro · Fiche produit | browser | 1600 × 1000 | /ar/logiciels/catalogpro/, /en/logiciels/catalogpro/, /logiciels/catalogpro/ | to add |
+| `garagepro-reparations` | GaragePro · Ordres de réparation | browser | 1600 × 1000 | /, /ar/, /ar/logiciels/, /ar/logiciels/garagepro/, /en/, /en/logiciels/, /en/logiciels/garagepro/, /logiciels/, /logiciels/garagepro/ | to add |
+| `garagepro-site` | GaragePro · Garage website | browser | 1600 × 1000 | /ar/logiciels/garagepro/, /en/logiciels/garagepro/, /logiciels/garagepro/ | to add |
+| `garagepro-stock` | GaragePro · قطع الغيار والمخزون | browser | 1600 × 1000 | /ar/logiciels/garagepro/, /en/logiciels/garagepro/, /logiciels/garagepro/ | to add |
+| `garagepro-vehicule` | GaragePro · Vehicle record | browser | 1600 × 1000 | /ar/logiciels/garagepro/, /en/logiciels/garagepro/, /logiciels/garagepro/ | to add |
+| `matjarpro-boutique` | MatjarPro · Boutique | browser | 1600 × 1000 | /, /ar/, /ar/logiciels/, /en/, /en/logiciels/, /logiciels/ | to add |
+| `matjarpro-boutique-mobile` | MatjarPro · Boutique | phone | 750 × 1600 | /, /ar/, /ar/logiciels/matjarpro/, /en/, /en/logiciels/matjarpro/, /logiciels/matjarpro/ | to add |
+| `matjarpro-commandes` | MatjarPro · Commandes | browser | 1600 × 1000 | /ar/logiciels/matjarpro/, /en/logiciels/matjarpro/, /logiciels/matjarpro/ | to add |
+| `matjarpro-livraison` | MatjarPro · Livraison | browser | 1600 × 1000 | /ar/logiciels/matjarpro/, /en/logiciels/matjarpro/, /logiciels/matjarpro/ | to add |
+| `matjarpro-protection` | MatjarPro · Protection | browser | 1600 × 1000 | /ar/logiciels/matjarpro/, /en/logiciels/matjarpro/, /logiciels/matjarpro/ | to add |
+| `safardesk-chambres` | SafarDesk · Affectation des chambres | browser | 1600 × 1000 | /ar/logiciels/safardesk/, /en/logiciels/safardesk/, /logiciels/safardesk/ | to add |
+| `safardesk-finances` | SafarDesk · Finances | browser | 1600 × 1000 | /ar/logiciels/safardesk/, /en/logiciels/safardesk/, /logiciels/safardesk/ | to add |
+| `safardesk-reservation` | SafarDesk · Réservation | browser | 1600 × 1000 | /ar/logiciels/safardesk/, /en/logiciels/safardesk/, /logiciels/safardesk/ | to add |
+| `safardesk-reservations` | SafarDesk · Réservations | browser | 1600 × 1000 | /, /ar/, /ar/logiciels/, /en/, /en/logiciels/, /logiciels/ | to add |
+| `safardesk-tableau-de-bord` | SafarDesk · Tableau de bord | browser | 1600 × 1000 | /, /ar/, /ar/logiciels/safardesk/, /en/, /en/logiciels/safardesk/, /logiciels/safardesk/ | to add |
+| `salonpro-caisse` | SalonPro · الصندوق | window | 1600 × 1000 | /, /ar/, /ar/logiciels/, /ar/logiciels/salonpro/, /en/, /en/logiciels/, /en/logiciels/salonpro/, /logiciels/, /logiciels/salonpro/ | to add |
+| `salonpro-cloture` | SalonPro · Clôture de caisse | window | 1600 × 1000 | /ar/logiciels/salonpro/, /en/logiciels/salonpro/, /logiciels/salonpro/ | to add |
+| `salonpro-fiche-cliente` | SalonPro · Client record | window | 1600 × 1000 | /ar/logiciels/salonpro/, /en/logiciels/salonpro/, /logiciels/salonpro/ | to add |
+| `salonpro-planning` | SalonPro · جدول المواعيد | window | 1600 × 1000 | /, /ar/, /ar/logiciels/salonpro/, /en/, /en/logiciels/salonpro/, /logiciels/salonpro/ | to add |
+| `salonpro-tableau-de-bord` | SalonPro · Tableau de bord | window | 1600 × 1000 | /ar/logiciels/salonpro/, /en/logiciels/salonpro/, /logiciels/salonpro/ | to add |

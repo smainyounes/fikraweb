@@ -12,7 +12,7 @@
   const themeMeta = $('meta[name="theme-color"]');
   const syncTheme = () => {
     const dark = root.dataset.theme !== 'light';
-    $$('.theme-toggle').forEach((b) => b.setAttribute('aria-label', dark ? 'Activer le mode clair' : 'Activer le mode sombre'));
+    $$('.theme-toggle').forEach((b) => b.setAttribute('aria-label', dark ? b.dataset.labelLight : b.dataset.labelDark));
     if (themeMeta) themeMeta.content = dark ? '#050816' : '#FFFFFF';
   };
   $$('.theme-toggle').forEach((b) => b.addEventListener('click', () => {
@@ -48,7 +48,7 @@
   if (toggle && mobile) {
     const setMobile = (open) => {
       toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      toggle.setAttribute('aria-label', open ? toggle.dataset.labelClose : toggle.dataset.labelOpen);
       mobile.hidden = !open;
       document.body.classList.toggle('menu-open', open);
       if (open) $('a', mobile)?.focus();
@@ -137,14 +137,16 @@
       if (first) first.focus();
       return !first;
     };
+    // French puts a space before ":"; Arabic and English don't.
+    const sep = document.documentElement.lang === 'fr' ? ' :' : ':';
     const message = () => {
       const lines = [form.dataset.intro, ''];
       const blocks = [];
       inputs.forEach((el) => {
         const v = el.value.trim();
         if (!v) return;
-        if ('block' in el.dataset) blocks.push('', `${el.dataset.label} :`, v);
-        else lines.push(`${el.dataset.label} : ${v}`);
+        if ('block' in el.dataset) blocks.push('', `${el.dataset.label}${sep}`, v);
+        else lines.push(`${el.dataset.label}${sep} ${v}`);
       });
       return [...lines, ...blocks].join('\n');
     };
