@@ -26,7 +26,7 @@ export const products = [
     summary:
       'Rendez-vous, clients, prestations et caisse dans une seule application, sur PC Windows ou tablette Android, qui fonctionne entièrement hors ligne.',
     benefit: 'Une caisse contrôlée chaque soir, écarts compris.',
-    pricing: { setup: 29000, monthly: null, setupLabel: 'Licence à vie pour un appareil (PC Windows ou tablette Android)', note: 'Support optionnel : environ 6 000 DA/an' },
+    pricing: { setup: 29000, monthly: null, setupLabel: 'Licence à vie pour un appareil (PC Windows ou tablette Android)', supportYearly: 6000 },
     shot: { id: 'salonpro-caisse', label: 'SalonPro · Caisse', frame: 'window' },
     whatsapp: 'Bonjour, je souhaite découvrir SalonPro.',
   },

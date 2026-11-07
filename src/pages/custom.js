@@ -25,7 +25,8 @@ const questions = [
 function form() {
   const emailSet = isSet(site.contact.email);
   return `
-<form class="pform card card-glow" id="project-form" data-project-form novalidate
+<form class="pform card card-glow" id="project-form" data-wa-form novalidate
+      data-intro="Bonjour FikraWeb, j’ai un projet de logiciel sur mesure." data-subject="Projet sur mesure"
       data-whatsapp="${esc(site.contact.whatsapp)}" ${emailSet ? `data-email="${esc(site.contact.email)}"` : ''}>
   <div class="pform-head">
     <h3>Présentez votre projet</h3>
@@ -34,21 +35,21 @@ function form() {
   <div class="pform-grid">
     <div class="field">
       <label for="pf-name">Nom complet <span aria-hidden="true">*</span></label>
-      <input id="pf-name" name="name" type="text" autocomplete="name" required minlength="2" aria-describedby="pf-name-err">
+      <input id="pf-name" name="name" data-label="Nom" type="text" autocomplete="name" required minlength="2" aria-describedby="pf-name-err">
       <p class="field-error" id="pf-name-err" hidden>Indiquez votre nom.</p>
     </div>
     <div class="field">
       <label for="pf-company">Entreprise <span class="field-opt">(facultatif)</span></label>
-      <input id="pf-company" name="company" type="text" autocomplete="organization">
+      <input id="pf-company" name="company" data-label="Entreprise" type="text" autocomplete="organization">
     </div>
     <div class="field">
       <label for="pf-phone">Téléphone / WhatsApp <span aria-hidden="true">*</span></label>
-      <input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05 XX XX XX XX" required aria-describedby="pf-phone-err">
+      <input id="pf-phone" name="phone" data-label="Téléphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05 XX XX XX XX" required aria-describedby="pf-phone-err">
       <p class="field-error" id="pf-phone-err" hidden>Indiquez un numéro de téléphone valide.</p>
     </div>
     <div class="field">
       <label for="pf-type">Type de projet <span aria-hidden="true">*</span></label>
-      <div class="select"><select id="pf-type" name="type" required aria-describedby="pf-type-err">
+      <div class="select"><select id="pf-type" name="type" data-label="Type de projet" data-subject-field required aria-describedby="pf-type-err">
         <option value="">Choisir…</option>
         ${projectTypes.map((t) => `<option>${esc(t)}</option>`).join('')}
       </select>${icon('chevron-down', { size: 18 })}</div>
@@ -56,7 +57,7 @@ function form() {
     </div>
     <div class="field field-full">
       <label for="pf-desc">Votre besoin <span aria-hidden="true">*</span></label>
-      <textarea id="pf-desc" name="description" rows="5" required minlength="20" aria-describedby="pf-desc-hint pf-desc-err" placeholder="Votre activité, comment vous travaillez aujourd’hui, ce que le logiciel doit vous apporter…"></textarea>
+      <textarea id="pf-desc" name="description" data-label="Mon besoin" data-block rows="5" required minlength="20" aria-describedby="pf-desc-hint pf-desc-err" placeholder="Votre activité, comment vous travaillez aujourd’hui, ce que le logiciel doit vous apporter…"></textarea>
       <p class="field-hint" id="pf-desc-hint">Quelques phrases suffisent. Pas besoin de termes techniques.</p>
       <p class="field-error" id="pf-desc-err" hidden>Décrivez votre besoin en quelques phrases (20 caractères minimum).</p>
     </div>

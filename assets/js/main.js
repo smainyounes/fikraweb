@@ -110,46 +110,43 @@
     }));
   });
 
-  // ---------- project enquiry form → WhatsApp (or e-mail) ----------
-  $$('[data-project-form]').forEach((form) => {
-    const fields = {
-      name: { el: form.elements.name, ok: (v) => v.trim().length >= 2 },
-      phone: { el: form.elements.phone, ok: (v) => { const d = v.replace(/\D/g, ''); return d.length >= 9 && d.length <= 13; } },
-      type: { el: form.elements.type, ok: (v) => v !== '' },
-      description: { el: form.elements.description, ok: (v) => v.trim().length >= 20 },
+  // ---------- forms → WhatsApp (or e-mail) ----------
+  // Any <form data-wa-form>. Each field declares data-label (its name in the message);
+  // data-block puts a long answer on its own lines. Rules come from required, minlength and type="tel".
+  $$('[data-wa-form]').forEach((form) => {
+    const inputs = $$('[data-label]', form);
+    const valid = (el) => {
+      const v = el.value.trim();
+      if (el.required && v === '') return false;
+      if (v && el.type === 'tel') { const d = v.replace(/\D/g, ''); if (d.length < 9 || d.length > 13) return false; }
+      if (v && el.minLength > 0 && v.length < el.minLength) return false;
+      return true;
     };
-    const showError = (f, bad) => {
-      f.el.setAttribute('aria-invalid', String(bad));
-      const err = document.getElementById(`${f.el.id}-err`);
+    const showError = (el, bad) => {
+      el.setAttribute('aria-invalid', String(bad));
+      const err = document.getElementById(`${el.id}-err`);
       if (err) err.hidden = !bad;
     };
     // re-validate a field once the visitor has been told it was wrong
-    Object.values(fields).forEach((f) => f.el.addEventListener('input', () => {
-      if (f.el.getAttribute('aria-invalid') === 'true') showError(f, !f.ok(f.el.value));
+    inputs.forEach((el) => el.addEventListener('input', () => {
+      if (el.getAttribute('aria-invalid') === 'true') showError(el, !valid(el));
     }));
     const validate = () => {
       let first = null;
-      Object.values(fields).forEach((f) => {
-        const bad = !f.ok(f.el.value);
-        showError(f, bad);
-        if (bad && !first) first = f.el;
-      });
+      inputs.forEach((el) => { const bad = !valid(el); showError(el, bad); if (bad && !first) first = el; });
       if (first) first.focus();
       return !first;
     };
     const message = () => {
-      const v = (n) => form.elements[n].value.trim();
-      return [
-        'Bonjour FikraWeb, j’ai un projet de logiciel sur mesure.',
-        '',
-        `Nom : ${v('name')}`,
-        v('company') ? `Entreprise : ${v('company')}` : null,
-        `Téléphone : ${v('phone')}`,
-        `Type de projet : ${v('type')}`,
-        '',
-        'Mon besoin :',
-        v('description'),
-      ].filter((l) => l !== null).join('\n');
+      const lines = [form.dataset.intro, ''];
+      const blocks = [];
+      inputs.forEach((el) => {
+        const v = el.value.trim();
+        if (!v) return;
+        if ('block' in el.dataset) blocks.push('', `${el.dataset.label} :`, v);
+        else lines.push(`${el.dataset.label} : ${v}`);
+      });
+      return [...lines, ...blocks].join('\n');
     };
     const done = $('.pform-done', form);
     const fallback = $('[data-wa-fallback]', form);
@@ -165,7 +162,8 @@
     const emailBtn = $('[data-send-email]', form);
     if (emailBtn) emailBtn.addEventListener('click', () => {
       if (!validate()) return;
-      const subject = `Projet sur mesure : ${form.elements.type.value}`;
+      const subjectField = $('[data-subject-field]', form);
+      const subject = [form.dataset.subject, subjectField && subjectField.value].filter(Boolean).join(' : ');
       window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message())}`;
     });
   });

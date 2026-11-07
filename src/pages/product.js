@@ -14,7 +14,8 @@ import catalogpro from '../content/products/catalogpro.js';
 const CONTENT = { salonpro, garagepro, carrentpro, safardesk, matjarpro, catalogpro };
 
 function priceBox(p) {
-  const { setup, monthly, setupLabel, note } = p.pricing;
+  const { setup, monthly, setupLabel, supportYearly } = p.pricing;
+  const note = supportYearly ? `Support optionnel : environ ${money(supportYearly)}/an` : '';
   return `<div class="price-box">
     <div class="price-box-row"><span class="price-box-label">${monthly ? 'Installation' : 'Licence'}</span><strong class="price-box-value">${money(setup)}</strong></div>
     ${monthly

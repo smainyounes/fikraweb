@@ -7,6 +7,7 @@
 <title>Développement de logiciels sur mesure en Algérie · ERP, stock, production | FikraWeb</title>
 <meta name="description" content="FikraWeb développe des logiciels sur mesure pour les entreprises algériennes : ERP, gestion de stock et de production, ventes, RH et pointage, tableaux de bord et applications web. Projets chiffrés selon le besoin.">
 
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FikraWeb">
 <meta property="og:locale" content="fr_DZ">
@@ -23,7 +24,7 @@
 <link rel="icon" href="/assets/img/brand/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css?v=ec00420b">
+<link rel="stylesheet" href="/assets/css/site.css?v=37a2f185">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"/"},{"@type":"ListItem","position":2,"name":"Développement sur mesure","item":"/sur-mesure/"}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Combien coûte un logiciel sur mesure ?","acceptedAnswer":{"@type":"Answer","text":"Il n’y a pas de prix fixe : chaque projet est chiffré selon son périmètre. Après l’analyse de votre besoin, vous recevez une proposition détaillée avec les étapes, les délais et le prix."}},{"@type":"Question","name":"Faut-il un cahier des charges ?","acceptedAnswer":{"@type":"Answer","text":"Non. Expliquez votre activité et vos difficultés avec vos mots. Nous définissons ensemble ce que le logiciel doit faire."}},{"@type":"Question","name":"Combien de temps faut-il ?","acceptedAnswer":{"@type":"Answer","text":"Cela dépend de l’ampleur du projet. Les délais sont fixés dans la proposition, et le développement avance par étapes que vous validez."}},{"@type":"Question","name":"Puis-je commencer par une partie seulement ?","acceptedAnswer":{"@type":"Answer","text":"Oui. On peut commencer par le module le plus utile, puis ajouter les autres par étapes."}},{"@type":"Question","name":"Que se passe-t-il après la mise en service ?","acceptedAnswer":{"@type":"Answer","text":"Vos équipes sont formées, et nous assurons le suivi et la maintenance du logiciel."}},{"@type":"Question","name":"Un de vos logiciels existants peut-il être adapté ?","acceptedAnswer":{"@type":"Answer","text":"Oui, c’est souvent la solution la plus rapide : nous partons d’un de nos logiciels et l’adaptons à vos besoins. Parlez-nous de votre projet."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","serviceType":"Développement de logiciels sur mesure","provider":{"@type":"Organization","name":"FikraWeb"},"areaServed":"DZ"}</script>
@@ -145,7 +146,8 @@
       <p class="project-direct">Vous préférez écrire directement ? <a href="https://wa.me/213552791423?text=Bonjour%2C%20j'ai%20un%20projet%20de%20logiciel%20sur%20mesure." target="_blank" rel="noopener">+213 552 79 14 23</a></p>
     </div>
     <div class="reveal">
-<form class="pform card card-glow" id="project-form" data-project-form novalidate
+<form class="pform card card-glow" id="project-form" data-wa-form novalidate
+      data-intro="Bonjour FikraWeb, j’ai un projet de logiciel sur mesure." data-subject="Projet sur mesure"
       data-whatsapp="213552791423" >
   <div class="pform-head">
     <h3>Présentez votre projet</h3>
@@ -154,21 +156,21 @@
   <div class="pform-grid">
     <div class="field">
       <label for="pf-name">Nom complet <span aria-hidden="true">*</span></label>
-      <input id="pf-name" name="name" type="text" autocomplete="name" required minlength="2" aria-describedby="pf-name-err">
+      <input id="pf-name" name="name" data-label="Nom" type="text" autocomplete="name" required minlength="2" aria-describedby="pf-name-err">
       <p class="field-error" id="pf-name-err" hidden>Indiquez votre nom.</p>
     </div>
     <div class="field">
       <label for="pf-company">Entreprise <span class="field-opt">(facultatif)</span></label>
-      <input id="pf-company" name="company" type="text" autocomplete="organization">
+      <input id="pf-company" name="company" data-label="Entreprise" type="text" autocomplete="organization">
     </div>
     <div class="field">
       <label for="pf-phone">Téléphone / WhatsApp <span aria-hidden="true">*</span></label>
-      <input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05 XX XX XX XX" required aria-describedby="pf-phone-err">
+      <input id="pf-phone" name="phone" data-label="Téléphone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05 XX XX XX XX" required aria-describedby="pf-phone-err">
       <p class="field-error" id="pf-phone-err" hidden>Indiquez un numéro de téléphone valide.</p>
     </div>
     <div class="field">
       <label for="pf-type">Type de projet <span aria-hidden="true">*</span></label>
-      <div class="select"><select id="pf-type" name="type" required aria-describedby="pf-type-err">
+      <div class="select"><select id="pf-type" name="type" data-label="Type de projet" data-subject-field required aria-describedby="pf-type-err">
         <option value="">Choisir…</option>
         <option>ERP / gestion complète de l’entreprise</option><option>Gestion de stock ou d’entrepôt</option><option>Gestion de production</option><option>Ventes, achats et facturation</option><option>RH, pointage et paie</option><option>Tableaux de bord et rapports</option><option>Application web ou plateforme</option><option>Intégration ou automatisation</option><option>Autre</option>
       </select><svg class="icon " width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" /></svg></div>
@@ -176,7 +178,7 @@
     </div>
     <div class="field field-full">
       <label for="pf-desc">Votre besoin <span aria-hidden="true">*</span></label>
-      <textarea id="pf-desc" name="description" rows="5" required minlength="20" aria-describedby="pf-desc-hint pf-desc-err" placeholder="Votre activité, comment vous travaillez aujourd’hui, ce que le logiciel doit vous apporter…"></textarea>
+      <textarea id="pf-desc" name="description" data-label="Mon besoin" data-block rows="5" required minlength="20" aria-describedby="pf-desc-hint pf-desc-err" placeholder="Votre activité, comment vous travaillez aujourd’hui, ce que le logiciel doit vous apporter…"></textarea>
       <p class="field-hint" id="pf-desc-hint">Quelques phrases suffisent. Pas besoin de termes techniques.</p>
       <p class="field-error" id="pf-desc-err" hidden>Décrivez votre besoin en quelques phrases (20 caractères minimum).</p>
     </div>
@@ -219,6 +221,6 @@
   </div>
 </footer>
 <a class="wa-float" href="https://wa.me/213552791423?text=Bonjour%2C%20j'ai%20un%20projet%20de%20logiciel%20sur%20mesure." target="_blank" rel="noopener" aria-label="Écrire à FikraWeb sur WhatsApp"><svg class="icon " width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" /></svg></a>
-<script src="/assets/js/main.js?v=ec00420b" defer></script>
+<script src="/assets/js/main.js?v=37a2f185" defer></script>
 </body>
 </html>

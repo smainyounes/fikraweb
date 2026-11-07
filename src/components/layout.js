@@ -114,6 +114,7 @@ export function layout(page) {
 <script>(function(d){d.classList.add('js');var t;try{t=localStorage.getItem('theme')}catch(e){}d.dataset.theme=t==='light'||t==='dark'?t:'dark'})(document.documentElement)</script>
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(page.description)}">
+${page.noindex ? '<meta name="robots" content="noindex">' : ''}
 ${canonical ? `<link rel="canonical" href="${esc(canonical)}">` : ''}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(site.name)}">

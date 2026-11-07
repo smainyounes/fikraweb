@@ -22,6 +22,11 @@ import home from './src/pages/home.js';
 import productsPage from './src/pages/products.js';
 import productPages from './src/pages/product.js';
 import customPage from './src/pages/custom.js';
+import pricingPage from './src/pages/pricing.js';
+import methodPage from './src/pages/method.js';
+import faqPage from './src/pages/faq.js';
+import contactPage from './src/pages/contact.js';
+import notFoundPage from './src/pages/notfound.js';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SRC = join(ROOT, 'src');
@@ -33,7 +38,7 @@ const MANIFEST = join(ROOT, '.build-manifest.json');
 const REPLACEABLE = new Set(['index.html']);
 
 // Pages are added here as each stage is built. A page function may return one page or a list.
-const PAGES = [home, productsPage, productPages, customPage];
+const PAGES = [home, productsPage, productPages, customPage, pricingPage, methodPage, faqPage, contactPage, notFoundPage];
 
 // ---------------------------------------------------------------- clean previous output
 const previous = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : { files: [] };
@@ -116,7 +121,7 @@ for (const make of PAGES) {
 // ---------------------------------------------------------------- robots & sitemap
 if (isSet(site.url)) {
   write(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\nSitemap: ${site.url}/sitemap.xml\n`);
-  const urls = built.map((p) => `  <url><loc>${site.url}${p.path}</loc></url>`).join('\n');
+  const urls = built.filter((p) => !p.noindex).map((p) => `  <url><loc>${site.url}${p.path}</loc></url>`).join('\n');
   write(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
 } else {
   write(join(OUT, 'robots.txt'), 'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /docs/\n');
