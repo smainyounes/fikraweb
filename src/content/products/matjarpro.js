@@ -47,14 +47,13 @@ export default {
   ],
 
   pricingNotes: [
-    'Installation et configuration initiale incluses.',
+    'Installation et configuration initiale offertes, quelle que soit la formule.',
     'Formation incluse.',
-    'Abonnement mensuel nécessaire au fonctionnement de la boutique en ligne.',
     'Aucun pourcentage prélevé sur vos ventes.',
   ],
 
   faq: [
-    { q: 'MatjarPro prend-il une commission sur mes ventes ?', a: 'Non. Vous payez l’installation et l’abonnement mensuel, et aucun pourcentage n’est prélevé sur vos ventes.' },
+    { q: 'MatjarPro prend-il une commission sur mes ventes ?', a: 'Non. Vous payez l’abonnement mensuel ou l’achat en une fois, et aucun pourcentage n’est prélevé sur vos ventes.' },
     { q: 'Quelles sociétés de livraison sont prises en charge ?', a: 'MatjarPro se connecte aux sociétés de livraison algériennes via une passerelle : Yalidine, ZR Express, DHD, Maystro, les plateformes Ecotrack et d’autres. Il vous faut un compte chez la société choisie.' },
     { q: 'Mes clients doivent-ils créer un compte ?', a: 'Non. Ils commandent directement depuis la page du produit, avec leur nom, leur téléphone, leur wilaya et leur commune.' },
     { q: 'Comment MatjarPro aide-t-il contre les fausses commandes ?', a: 'Vous voyez l’historique de chaque numéro, vous pouvez limiter le nombre de commandes par jour et par numéro, et bloquer un numéro après des colis retournés.' },

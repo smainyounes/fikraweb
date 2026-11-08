@@ -1,7 +1,7 @@
 // SalonPro's optional yearly support price comes from src/config/products.js.
 import { products } from '../../config/products.js';
 import { money } from '../../components/ui.js';
-const SUPPORT = money(products.find((p) => p.id === 'salonpro').pricing.supportYearly);
+const SUPPORT = money(products.find((p) => p.id === 'salonpro').pricing.yearly);
 // SalonPro · detailed page content. Facts checked against salon-pro/SalonPro/docs/product-specification.md.
 export default {
   description:
@@ -51,10 +51,9 @@ export default {
   ],
 
   pricingNotes: [
-    'Licence à vie, activée pour un appareil : PC Windows ou tablette Android.',
-    'Installation, configuration et formation incluses.',
-    'Aucun abonnement mensuel : l’application fonctionne sans internet, directement sur votre appareil.',
-    `Support optionnel : environ ${SUPPORT} par an.`,
+    'Activé pour un appareil : PC Windows ou tablette Android.',
+    'Installation, configuration et formation offertes, quelle que soit la formule.',
+    'L’application fonctionne sans internet, directement sur votre appareil.',
   ],
 
   faq: [

@@ -90,6 +90,10 @@
 .price-box-value { font-size: 1.75rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .price-box-value small { font-size: 0.55em; font-weight: 500; color: var(--muted); margin-inline-start: 2px; }
 .price-box-note { margin-top: 12px; font-size: var(--fs-small); color: var(--muted); }
+.price-opt .price-box-row { border-bottom: 0; padding-bottom: 0; }
+.price-opt .price-box-note { margin-top: 6px; }
+.price-or { display: flex; align-items: center; gap: 12px; margin: 18px 0 4px; font-size: var(--fs-small); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.price-or::before, .price-or::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 .pricing-card-foot { margin-top: 14px; font-size: 0.8125rem; color: var(--muted); text-align: center; }
 @media (max-width: 860px) { .pricing-grid { grid-template-columns: 1fr; } }
 

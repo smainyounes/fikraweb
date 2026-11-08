@@ -49,9 +49,8 @@ export default {
   ],
 
   pricingNotes: [
-    'Installation et configuration initiale incluses.',
+    'Installation et configuration initiale offertes, quelle que soit la formule.',
     'Formation des équipes incluse.',
-    'Abonnement mensuel nécessaire au fonctionnement du logiciel en ligne.',
     'Plusieurs agences gérées dans le même logiciel.',
   ],
 

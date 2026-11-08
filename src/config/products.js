@@ -2,6 +2,14 @@
 //  FikraWeb · products and prices
 //  Prices are in dinars, as plain numbers. They are formatted automatically
 //  ("29 000 DA") everywhere on the site. Change them here only.
+//
+//  Every product can be paid in two ways, with no setup fee:
+//    monthly  · subscription per month: installation, training, hosting,
+//               updates and assistance included.
+//    once     · one-time purchase (lifetime licence).
+//    yearly   · after a one-time purchase, from the 2nd year:
+//               online software → hosting, updates and assistance (required);
+//               SalonPro (yearlyOptional) → optional support and updates.
 // ============================================================================
 
 export const groups = [
@@ -26,7 +34,7 @@ export const products = [
     summary:
       'Rendez-vous, clients, prestations et caisse dans une seule application, sur PC Windows ou tablette Android, qui fonctionne entièrement hors ligne.',
     benefit: 'Une caisse contrôlée chaque soir, écarts compris.',
-    pricing: { setup: 29000, monthly: null, setupLabel: 'Licence à vie pour un appareil (PC Windows ou tablette Android)', supportYearly: 6000 },
+    pricing: { monthly: 1500, once: 29000, yearly: 6000, yearlyOptional: true },
     shot: { id: 'salonpro-caisse', label: 'SalonPro · Caisse', frame: 'window' },
     whatsapp: 'Bonjour, je souhaite découvrir SalonPro.',
   },
@@ -44,7 +52,7 @@ export const products = [
     summary:
       'Clients, véhicules, ordres de réparation, pièces, devis et factures, avec le site vitrine du garage.',
     benefit: "L'historique complet de chaque véhicule, en un clic.",
-    pricing: { setup: 49000, monthly: 2900 },
+    pricing: { monthly: 3900, once: 69000, yearly: 12000 },
     shot: { id: 'garagepro-reparations', label: 'GaragePro · Ordres de réparation', frame: 'browser' },
     whatsapp: 'Bonjour, je souhaite découvrir GaragePro.',
   },
@@ -62,7 +70,7 @@ export const products = [
     summary:
       'Parc automobile, réservations, contrats, cautions et entretien, avec un site public en français et en arabe.',
     benefit: 'Savoir à tout moment quel véhicule est disponible.',
-    pricing: { setup: 59000, monthly: 3500 },
+    pricing: { monthly: 4500, once: 79000, yearly: 12000 },
     shot: { id: 'carrentpro-reservations', label: 'CarRent Pro · Réservations', frame: 'browser' },
     whatsapp: 'Bonjour, je suis intéressé par CarRent Pro.',
   },
@@ -80,7 +88,7 @@ export const products = [
     summary:
       'Clients, réservations, Omra et Hajj, visas, billetterie, chambres et trésorerie, pour une ou plusieurs agences.',
     benefit: "Toute l'activité de l'agence suivie au même endroit.",
-    pricing: { setup: 119000, monthly: 4900 },
+    pricing: { monthly: 7900, once: 139000, yearly: 18000 },
     shot: { id: 'safardesk-reservations', label: 'SafarDesk · Réservations', frame: 'browser' },
     whatsapp: 'Bonjour, je suis intéressé par SafarDesk.',
   },
@@ -98,7 +106,7 @@ export const products = [
     summary:
       'Boutique en ligne pensée pour le paiement à la livraison : commande rapide, livraison par wilaya et commune, suivi des colis.',
     benefit: 'Aucun pourcentage prélevé sur vos ventes.',
-    pricing: { setup: 39000, monthly: 2900 },
+    pricing: { monthly: 3500, once: 59000, yearly: 12000 },
     shot: { id: 'matjarpro-boutique', label: 'MatjarPro · Boutique', frame: 'phone' },
     whatsapp: 'Bonjour, je souhaite découvrir MatjarPro.',
   },
@@ -116,7 +124,7 @@ export const products = [
     summary:
       'Site catalogue professionnel avec des listes de prix personnalisées par client, partagées par lien privé.',
     benefit: 'Chaque client voit ses prix, et seulement les siens.',
-    pricing: { setup: 25000, monthly: 1900 },
+    pricing: { monthly: 2500, once: 39000, yearly: 9000 },
     shot: { id: 'catalogpro-listes-de-prix', label: 'CatalogPro · Listes de prix', frame: 'browser' },
     whatsapp: 'Bonjour, je souhaite découvrir CatalogPro.',
   },
@@ -126,4 +134,4 @@ export const products = [
 export const productStyle = (p) => `style="--c-l:${p.color};--c-d:${p.colorDark}" data-pc`;
 
 export const productUrl = (p) => `/logiciels/${p.slug}/`;
-export const lowestSetup = () => Math.min(...products.map((p) => p.pricing.setup));
+export const lowestMonthly = () => Math.min(...products.map((p) => p.pricing.monthly));

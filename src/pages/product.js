@@ -13,15 +13,24 @@ import catalogpro from '../content/products/catalogpro.js';
 
 const CONTENT = { salonpro, garagepro, carrentpro, safardesk, matjarpro, catalogpro };
 
+// Two ways to pay, no setup fee (amounts from src/config/products.js).
 function priceBox(p) {
-  const { setup, monthly, setupLabel, supportYearly } = p.pricing;
-  const note = supportYearly ? `Support optionnel : environ ${money(supportYearly)}/an` : '';
+  const { monthly, once, yearly, yearlyOptional } = p.pricing;
+  const monthlyNote = yearlyOptional ? 'Mises à jour et assistance comprises.' : 'Hébergement, mises à jour et assistance compris.';
+  const onceNote = yearlyOptional ? 'Licence à vie pour un appareil.' : 'Licence à vie. Première année d’hébergement comprise.';
+  const after = yearlyOptional
+    ? `Support et mises à jour optionnels : ${money(yearly)}/an.`
+    : `Ensuite : ${money(yearly)}/an pour l’hébergement, les mises à jour et l’assistance.`;
   return `<div class="price-box">
-    <div class="price-box-row"><span class="price-box-label">${monthly ? 'Installation' : 'Licence'}</span><strong class="price-box-value">${money(setup)}</strong></div>
-    ${monthly
-      ? `<div class="price-box-row"><span class="price-box-label">Abonnement</span><strong class="price-box-value">${money(monthly)}<small>/mois</small></strong></div>`
-      : `<p class="price-box-note">${esc(setupLabel)}</p>`}
-    ${note ? `<p class="price-box-note">${esc(note)}</p>` : ''}
+    <div class="price-opt">
+      <div class="price-box-row"><span class="price-box-label">Abonnement mensuel</span><strong class="price-box-value">${money(monthly)}<small>/mois</small></strong></div>
+      <p class="price-box-note"><span>Sans frais d’installation.</span> <span>${monthlyNote}</span></p>
+    </div>
+    <p class="price-or"><span>ou</span></p>
+    <div class="price-opt">
+      <div class="price-box-row"><span class="price-box-label">Achat en une fois</span><strong class="price-box-value">${money(once)}</strong></div>
+      <p class="price-box-note"><span>${onceNote}</span> <span>${after}</span></p>
+    </div>
   </div>`;
 }
 
@@ -115,7 +124,7 @@ function page(p) {
   <div class="container pricing-grid">
     <div class="section-head reveal">
       <p class="eyebrow">Tarif</p>
-      <h2 id="pricing-title">${p.pricing.monthly ? 'Une installation, puis un abonnement mensuel.' : 'Une licence, payée une seule fois.'}</h2>
+      <h2 id="pricing-title">Deux façons de payer, sans frais d’installation.</h2>
       <ul class="pricing-notes">${c.pricingNotes.map((n) => `<li>${icon('check', { size: 18 })}<span>${esc(n)}</span></li>`).join('')}</ul>
       <p class="pricing-more"><a class="link-arrow" href="/tarifs/"><span>Comparer tous les tarifs</span>${icon('arrow-right', { size: 16 })}</a></p>
     </div>
@@ -152,7 +161,10 @@ function page(p) {
     operatingSystem: p.id === 'salonpro' ? 'Windows, Android' : 'Web',
     description: c.description,
     inLanguage: ['fr', 'ar'],
-    offers: { '@type': 'Offer', price: String(p.pricing.setup), priceCurrency: 'DZD', availability: 'https://schema.org/InStock' },
+    offers: [
+      { '@type': 'Offer', name: 'Abonnement mensuel', price: String(p.pricing.monthly), priceCurrency: 'DZD', availability: 'https://schema.org/InStock', priceSpecification: { '@type': 'UnitPriceSpecification', price: String(p.pricing.monthly), priceCurrency: 'DZD', unitCode: 'MON' } },
+      { '@type': 'Offer', name: 'Achat en une fois', price: String(p.pricing.once), priceCurrency: 'DZD', availability: 'https://schema.org/InStock' },
+    ],
     publisher: { '@type': 'Organization', name: site.name },
   };
 

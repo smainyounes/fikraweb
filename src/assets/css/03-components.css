@@ -185,6 +185,8 @@ body.menu-open { overflow: hidden; }
 .price-from { font-size: var(--fs-small); color: var(--muted); }
 .price-main { font-size: 1.625rem; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink); }
 .price-tail { font-size: var(--fs-small); color: var(--muted); }
+.price-per { font-size: var(--fs-small); color: var(--muted); margin-inline-start: -6px; }
+.price-alt { flex-basis: 100%; font-size: var(--fs-small); color: var(--muted); }
 
 /* ---------- footer (dark in both themes) ---------- */
 .site-footer { background: #03050F; color: var(--text); padding-block: 64px 28px; font-size: 0.9375rem; border-top: 1px solid var(--line); }

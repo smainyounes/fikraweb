@@ -1,7 +1,7 @@
 // SalonPro's optional yearly support price comes from src/config/products.js.
 import { products } from '../config/products.js';
 import { money } from '../components/ui.js';
-const SUPPORT = money(products.find((p) => p.id === 'salonpro').pricing.supportYearly);
+const SUPPORT = money(products.find((p) => p.id === 'salonpro').pricing.yearly);
 // Main FAQ (/faq/). Answers are product-specific where the products differ:
 // only SalonPro works offline; languages differ per product (see src/content/products/).
 export const faqGroups = [
@@ -22,14 +22,15 @@ export const faqGroups = [
     items: [
       { q: 'Peut-on voir une démonstration avant l’achat ?', a: 'Oui. Écrivez-nous sur WhatsApp : nous vous présentons le logiciel adapté à votre activité, sur place ou à distance. SalonPro fonctionne en plus 15 jours après son installation, avant l’activation de la licence.' },
       { q: 'Comment se déroule l’installation ?', a: 'Après la démonstration, nous installons le logiciel : sur votre appareil pour SalonPro, en ligne pour les autres. Nous le configurons ensuite avec vos informations (nom, logo, prix, employés, paramètres), puis nous formons votre équipe.' },
-      { q: 'Une formation est-elle incluse ?', a: 'Oui. La formation de votre équipe est comprise dans l’installation. Ensuite, nous restons disponibles sur WhatsApp pour vos questions.' },
+      { q: 'Une formation est-elle incluse ?', a: 'Oui. La formation de votre équipe est offerte, quelle que soit la formule choisie. Ensuite, nous restons disponibles sur WhatsApp pour vos questions.' },
     ],
   },
   {
     id: 'tarifs',
-    title: 'Tarifs et abonnement',
+    title: 'Tarifs et paiement',
     items: [
-      { q: 'Comment fonctionne l’abonnement ?', a: `Pour les logiciels en ligne (GaragePro, CarRent Pro, SafarDesk, MatjarPro et CatalogPro), vous payez une installation, puis un abonnement mensuel nécessaire au fonctionnement du logiciel. SalonPro n’a pas d’abonnement : c’est une licence à vie pour un appareil, avec un support optionnel d’environ ${SUPPORT} par an.` },
+      { q: 'Comment peut-on payer ?', a: 'Chaque logiciel se paie au choix, sans frais d’installation : par abonnement mensuel, avec l’hébergement, les mises à jour et l’assistance compris, ou en une seule fois, avec une licence à vie.' },
+      { q: 'Que se passe-t-il après un achat en une fois ?', a: `Pour les logiciels en ligne, la première année d’hébergement, de mises à jour et d’assistance est comprise. Ensuite, un forfait annuel, indiqué sur la page Tarifs, couvre ces services. SalonPro fonctionne sur votre appareil : après l’achat, le support et les mises à jour sont optionnels, pour ${SUPPORT} par an.` },
       { q: 'Combien coûte un logiciel ?', a: 'Les tarifs de chaque logiciel sont indiqués sur la page Tarifs, en dinars. Les logiciels sur mesure et les fonctionnalités supplémentaires sont chiffrés sur devis, selon le besoin.' },
     ],
   },

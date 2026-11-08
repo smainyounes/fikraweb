@@ -323,6 +323,8 @@ font-family: var(--mono); font-size: 11px; line-height: 1.45; color: var(--c, va
 .price-from { font-size: var(--fs-small); color: var(--muted); }
 .price-main { font-size: 1.625rem; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--ink); }
 .price-tail { font-size: var(--fs-small); color: var(--muted); }
+.price-per { font-size: var(--fs-small); color: var(--muted); margin-inline-start: -6px; }
+.price-alt { flex-basis: 100%; font-size: var(--fs-small); color: var(--muted); }
 .site-footer { background: #03050F; color: var(--text); padding-block: 64px 28px; font-size: 0.9375rem; border-top: 1px solid var(--line); }
 .footer-top { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr); gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--line); }
 .footer-brand p { margin-top: 16px; max-width: 340px; line-height: 1.55; }
@@ -596,6 +598,10 @@ transition: border-color 0.25s, transform 0.25s var(--ease);
 .price-box-value { font-size: 1.75rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 .price-box-value small { font-size: 0.55em; font-weight: 500; color: var(--muted); margin-inline-start: 2px; }
 .price-box-note { margin-top: 12px; font-size: var(--fs-small); color: var(--muted); }
+.price-opt .price-box-row { border-bottom: 0; padding-bottom: 0; }
+.price-opt .price-box-note { margin-top: 6px; }
+.price-or { display: flex; align-items: center; gap: 12px; margin: 18px 0 4px; font-size: var(--fs-small); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.price-or::before, .price-or::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 .pricing-card-foot { margin-top: 14px; font-size: 0.8125rem; color: var(--muted); text-align: center; }
 @media (max-width: 860px) { .pricing-grid { grid-template-columns: 1fr; } }
 .faq-grid { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: clamp(32px, 5vw, 80px); align-items: start; }

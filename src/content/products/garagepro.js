@@ -48,9 +48,8 @@ export default {
   ],
 
   pricingNotes: [
-    'Installation et configuration initiale incluses.',
+    'Installation et configuration initiale offertes, quelle que soit la formule.',
     'Formation de votre équipe incluse.',
-    'Abonnement mensuel nécessaire au fonctionnement du logiciel en ligne.',
     'Site vitrine du garage inclus dans le logiciel.',
   ],
 

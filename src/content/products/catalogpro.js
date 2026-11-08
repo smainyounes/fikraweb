@@ -44,9 +44,8 @@ export default {
   ],
 
   pricingNotes: [
-    'Installation et configuration initiale incluses.',
+    'Installation et configuration initiale offertes, quelle que soit la formule.',
     'Formation incluse.',
-    'Abonnement mensuel nécessaire au fonctionnement du site en ligne.',
   ],
 
   faq: [

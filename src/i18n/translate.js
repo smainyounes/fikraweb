@@ -18,7 +18,7 @@ const KEEP = new Set([
   ...products.map((p) => p.name),
   'FikraWeb', 'WhatsApp', 'Facebook', 'Instagram', 'Telegram', 'Google Sheets', 'Google Analytics',
   'BaridiMob', 'CCP', 'Yalidine', 'ZR Express', 'DHD', 'Maystro', 'Ecotrack', 'TikTok', 'ERP', 'FAQ', 'PDF', 'CSV',
-  'FR', 'AR', 'EN', '404', 'WhatsApp ·',
+  'FR', 'AR', 'EN', '404', 'WhatsApp ·', 'MON',
 ]);
 const NOTHING_TO_TRANSLATE = /^[\d\s  .,:;·•+\-–—/×()%#*?!«»"'’|→←↑↓]*$/u;
 

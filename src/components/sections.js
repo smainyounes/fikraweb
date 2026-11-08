@@ -1,7 +1,7 @@
 // Sections shared by several pages.
 import { site } from '../config/site.js';
 import { products, productUrl, productStyle } from '../config/products.js';
-import { esc, icon, money, waButton, button, arrowLink } from './ui.js';
+import { esc, icon, money, price, waButton, button, arrowLink } from './ui.js';
 import { erpFlow, erpPeople } from '../content/custom.js';
 
 const absolute = (path) => (site.url.startsWith('http') ? `${site.url}${path}` : path);
@@ -59,12 +59,11 @@ export function ctaBand({ title, text, message, label = 'Écrire sur WhatsApp', 
 // Compact product card, used for related products and the listing page.
 export function productCard(p, { headingLevel = 3 } = {}) {
   const h = `h${headingLevel}`;
-  const monthly = p.pricing.monthly ? `<span class="price-tail">+ ${money(p.pricing.monthly)}/mois</span>` : '<span class="price-tail">licence à vie</span>';
   return `<article class="pcard card card-hover" ${productStyle(p)}>
     <p class="pcard-cat">${esc(p.industryShort)}</p>
     <${h} class="pcard-name"><a href="${productUrl(p)}">${esc(p.name)}</a></${h}>
     <p class="pcard-text">${esc(p.summary)}</p>
-    <div class="pcard-foot"><p class="price"><span class="price-from">dès</span><strong class="price-main">${money(p.pricing.setup)}</strong>${monthly}</p>${icon('arrow-right', { size: 20, cls: 'pcard-arrow' })}</div>
+    <div class="pcard-foot">${price(p)}${icon('arrow-right', { size: 20, cls: 'pcard-arrow' })}</div>
   </article>`;
 }
 

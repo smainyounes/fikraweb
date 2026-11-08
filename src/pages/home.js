@@ -1,5 +1,5 @@
 import { site } from '../config/site.js';
-import { products, productUrl, productStyle, lowestSetup } from '../config/products.js';
+import { products, productUrl, productStyle, lowestMonthly } from '../config/products.js';
 import { esc, icon, money, button, waButton, arrowLink, screenshot, price, wa } from '../components/ui.js';
 import { erpFlowFigure } from '../components/sections.js';
 import { homeCapabilities as capabilities } from '../content/custom.js';
@@ -68,7 +68,7 @@ const twoWays = () => `
         <h3>Logiciels prêts à l’emploi</h3>
         <p>Six logiciels conçus pour des métiers précis : salons, garages, location de voitures, agences de voyages, e-commerce et grossistes. Installés, configurés avec vos informations, et prêts à l’emploi.</p>
         <ul class="way-tags">${products.map((p) => `<li ${productStyle(p)}>${esc(p.name)}</li>`).join('')}</ul>
-        <div class="way-foot"><p class="way-price">À partir de <strong>${money(lowestSetup())}</strong></p>${arrowLink('#logiciels', 'Voir les logiciels')}</div>
+        <div class="way-foot"><p class="way-price">À partir de <strong>${money(lowestMonthly())}</strong>/mois</p>${arrowLink('#logiciels', 'Voir les logiciels')}</div>
       </article>
       <article class="way card card-glow">
         <p class="way-n">02</p>
@@ -111,7 +111,7 @@ const showcase = () => `
         <button class="sc-tab" type="button" id="sc-tab-${p.id}" aria-expanded="${open}" aria-controls="sc-panel-${p.id}" ${productStyle(p)}>
           <span class="sc-n">${String(i + 1).padStart(2, '0')}</span>
           <span class="sc-title"><span class="sc-name">${esc(p.name)}</span><span class="sc-ind">${esc(p.industryShort)}</span></span>
-          <span class="sc-price">dès ${money(p.pricing.setup)}</span>
+          <span class="sc-price">dès ${money(p.pricing.monthly)}/mois</span>
           ${icon('chevron-down', { size: 18, cls: 'sc-chev' })}
         </button>
       </h3>

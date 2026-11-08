@@ -78,8 +78,8 @@ export function screenshot({ id, label, frame = 'browser' }, { product = null, c
 }
 
 // ---------- price ----------
-export function price(p, { from = true } = {}) {
-  const { setup, monthly, setupLabel } = p.pricing;
-  const tail = monthly ? `+ ${money(monthly)}/mois` : esc(setupLabel ? 'licence à vie' : '');
-  return `<p class="price">${from ? '<span class="price-from">à partir de</span>' : ''}<strong class="price-main">${money(setup)}</strong>${tail ? `<span class="price-tail">${tail}</span>` : ''}</p>`;
+// Two ways to pay, no setup fee: the monthly price leads, the one-time price follows.
+export function price(p, { from = 'dès' } = {}) {
+  const { monthly, once } = p.pricing;
+  return `<p class="price">${from ? `<span class="price-from">${from}</span>` : ''}<strong class="price-main">${money(monthly)}</strong><span class="price-per">/mois</span><span class="price-alt">ou ${money(once)} en une fois</span></p>`;
 }

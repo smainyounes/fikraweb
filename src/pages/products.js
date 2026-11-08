@@ -1,7 +1,7 @@
 // Products listing: /logiciels/
 import { site } from '../config/site.js';
 import { products, groups, productUrl, productStyle } from '../config/products.js';
-import { esc, icon, money, button, waButton, screenshot, arrowLink } from '../components/ui.js';
+import { esc, icon, money, price, button, waButton, screenshot, arrowLink } from '../components/ui.js';
 import { breadcrumb, ctaBand } from '../components/sections.js';
 
 const CHIPS = {
@@ -14,7 +14,6 @@ const CHIPS = {
 };
 
 function row(p, i) {
-  const monthly = p.pricing.monthly ? `+ ${money(p.pricing.monthly)}/mois` : 'licence à vie';
   const shot = p.shot.frame === 'phone' ? { ...p.shot, frame: 'browser' } : p.shot;
   return `
   <article class="prow card" ${productStyle(p)} data-group="${p.group}" aria-labelledby="prow-${p.id}">
@@ -26,7 +25,7 @@ function row(p, i) {
       <p class="prow-benefit">${icon('check', { size: 18 })}<span>${esc(p.benefit)}</span></p>
       <ul class="chip-list">${CHIPS[p.id].map((c) => `<li>${esc(c)}</li>`).join('')}</ul>
       <div class="prow-foot">
-        <p class="price"><span class="price-from">à partir de</span><strong class="price-main">${money(p.pricing.setup)}</strong><span class="price-tail">${monthly}</span></p>
+        ${price(p)}
         <div class="cta-row">
           ${button({ href: productUrl(p), label: `Découvrir ${esc(p.name)}`, variant: 'product', iconEnd: 'arrow-right' })}
           <a class="sc-wa" href="https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(p.whatsapp)}" target="_blank" rel="noopener">${icon('message-circle', { size: 16 })}<span>Demander une démonstration</span></a>
