@@ -69,8 +69,18 @@ function guard(abs) {
     console.log(`  · Replacing the previous ${rel} (it is still in git history).`);
   }
 }
+// Prefix internal paths with site.basePath (e.g. "/fikraweb") in HTML, CSS and the sitemap.
+const BASE = (site.basePath || '').replace(/\/+$/, '');
+const withBase = (rel, content) => {
+  if (!BASE || !/\.(html|css)$/.test(rel)) return content;
+  return content
+    .replace(/(\s(?:href|src|action|content)=")\/(?!\/)/g, `$1${BASE}/`)
+    .replace(/(url\(\s*['"]?)\/(?!\/)/g, `$1${BASE}/`)
+    .replace(/("(?:item|url|logo)":")\/(?!\/)/g, `$1${BASE}/`);
+};
 function write(abs, content) {
   guard(abs);
+  content = withBase(toRel(abs), content);
   mkdirSync(dirname(abs), { recursive: true });
   writeFileSync(abs, content);
   written.push(toRel(abs));
@@ -166,7 +176,8 @@ for (const f of htmlFiles) {
   for (const [, attr, value] of html.matchAll(/\s(href|src)="([^"]+)"/g)) {
     if (/^(https?:|mailto:|tel:|data:)/.test(value)) continue;
     const [pathPart, hash] = value.split('#');
-    const targetPath = pathPart.split('?')[0] || pagePath;
+    let targetPath = pathPart.split('?')[0] || pagePath;
+    if (BASE && targetPath.startsWith(BASE + '/')) targetPath = targetPath.slice(BASE.length);
     const target = outFile(targetPath);
     const generated = written.includes(toRel(target));
     if (!generated) {
@@ -231,6 +242,8 @@ if (process.argv.includes('--serve')) {
   const port = Number(process.env.PORT) || 4173;
   createServer((req, res) => {
     let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+    if (BASE && (p === BASE || p === '/')) { res.writeHead(302, { location: BASE + '/' }); return res.end(); }
+    if (BASE && p.startsWith(BASE + '/')) p = p.slice(BASE.length);
     if (p.endsWith('/')) p += 'index.html';
     const file = join(OUT, p);
     if (!file.startsWith(OUT) || !existsSync(file) || statSync(file).isDirectory()) {
@@ -240,5 +253,5 @@ if (process.argv.includes('--serve')) {
     }
     res.writeHead(200, { 'content-type': types[extname(file)] || 'application/octet-stream' });
     res.end(readFileSync(file));
-  }).listen(port, () => console.log(`\nPreview: http://localhost:${port}  (Ctrl+C to stop)`));
+  }).listen(port, () => console.log(`\nPreview: http://localhost:${port}${BASE}/  (Ctrl+C to stop)`));
 }

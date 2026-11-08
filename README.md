@@ -67,6 +67,18 @@ so `src/`, `docs/` and the original logo files are never touched.
 - Set the e-mail and Instagram, or leave them in brackets to keep them hidden.
 - Add real screenshots (see `docs/screenshot-slots.md`).
 
+## GitHub Pages and the base path
+
+GitHub Pages serves this repository at `https://smainyounes.github.io/fikraweb/`, under a `/fikraweb/`
+folder. `basePath: '/fikraweb'` in `src/config/site.js` makes the build add that prefix to every internal
+link, image, font and stylesheet. If you later use a custom domain (site at the root), set `basePath: ''` and
+rebuild. `site.url` must be the full public address, including the folder:
+`https://smainyounes.github.io/fikraweb`.
+
+The preview (`node build.mjs --serve`) uses the same prefix: http://localhost:4173/fikraweb/
+
+`.nojekyll` tells GitHub Pages to publish the files as they are.
+
 ## Deploying
 
 Deploy this folder the same way as the old site: upload it to the host, or push it if the host publishes the

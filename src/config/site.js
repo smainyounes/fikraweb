@@ -15,6 +15,11 @@ export const site = {
   // Needed for canonical URLs, Open Graph and sitemap.xml.
   url: '[WEBSITE_URL]',
 
+  // Folder the site is served from. GitHub Pages without a custom domain serves the site at
+  // https://<user>.github.io/<repository>/, so every internal link needs that prefix.
+  // '/fikraweb' for https://smainyounes.github.io/fikraweb/ ; set it to '' with a custom domain.
+  basePath: '/fikraweb',
+
   contact: {
     // International format, digits only: 213 + the number without its leading 0.
     whatsapp: '213552791423',
